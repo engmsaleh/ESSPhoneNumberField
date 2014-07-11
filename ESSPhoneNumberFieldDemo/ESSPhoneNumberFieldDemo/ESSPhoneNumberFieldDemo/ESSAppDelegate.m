@@ -7,13 +7,25 @@
 //
 
 #import "ESSAppDelegate.h"
+#import "ESSPhoneNumberFieldDemoViewController.h"
+
+@interface ESSAppDelegate ()
+
+@property (nonatomic) UINavigationController *navigationController;
+@property (nonatomic) ESSPhoneNumberFieldDemoViewController *demoViewController;
+
+@end
 
 @implementation ESSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    
+    self.demoViewController = [[ESSPhoneNumberFieldDemoViewController alloc] initWithNibName:NSStringFromClass([ESSPhoneNumberFieldDemoViewController class]) bundle:nil];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.demoViewController];
+    self.window.rootViewController = self.navigationController;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

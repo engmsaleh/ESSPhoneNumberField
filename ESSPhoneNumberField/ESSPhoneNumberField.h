@@ -19,17 +19,17 @@
  */
 @property (readonly, nonatomic) UIButton *countryCodeButton;
 /**
- * A text field where the user enters the local portion of the phone number,
- * ::localPhoneNumber.
+ * A text field where the user enters the national portion of the phone number,
+ * ::nationalPhoneNumber.
  */
-@property (readonly, nonatomic) UITextField *localPhoneNumberField;
+@property (readonly, nonatomic) UITextField *nationalPhoneNumberField;
 
 /** The phone number, in E.164 format, displayed in the phone number field. */
 @property (readonly, nonatomic) NSString *phoneNumber;
 /** The country calling code displayed in the phone number field. */
-@property (readonly, nonatomic) NSString *countryCode;
-/** The local portion of the phone number displayed in the phone number field. */
-@property (readonly, nonatomic) NSString *localPhoneNumber;
+@property (nonatomic) NSString *countryCode;
+/** The national portion of the phone number displayed in the phone number field. */
+@property (nonatomic) NSString *nationalPhoneNumber;
 
 /** Reset the phone number field's appearance to the default values. */
 - (void)resetVisualAttributes;

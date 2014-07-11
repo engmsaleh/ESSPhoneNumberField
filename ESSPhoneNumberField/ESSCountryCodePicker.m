@@ -11,41 +11,6 @@
 #import "CountryPicker.h"
 #import "NBPhoneNumberUtil.h"
 
-
-#pragma mark - ESSCountry
-
-@interface ESSCountry : NSObject
-
-/** ISO two-letter country code */
-@property (nonatomic) NSString *regionCode;
-@property (nonatomic) NSString *name;
-@property (nonatomic) NSString *callingCode;
-
-+ (instancetype)countryWithRegionCode:(NSString *)regionCode
-                           name:(NSString *)name
-                    callingCode:(NSString *)callingCode;
-
-@end
-
-@implementation ESSCountry
-
-+ (instancetype)countryWithRegionCode:(NSString *)regionCode
-                           name:(NSString *)name
-                    callingCode:(NSString *)callingCode
-{
-    ESSCountry *country = [[self alloc] init];
-    if (country) {
-        country.regionCode = regionCode;
-        country.name = name;
-        country.callingCode = callingCode;
-    }
-    return country;
-}
-
-@end
-
-#pragma mark - ESSCountryCodePicker
-
 @interface ESSCountryCodePicker ()
 
 /**
@@ -58,7 +23,6 @@
 @property (nonatomic) NSArray *countrySectionTitles;
 
 @end
-
 
 @implementation ESSCountryCodePicker
 
@@ -75,6 +39,8 @@ static NSString * const kESSCountryCodePickerReuseIdentifier = @"kESSCountryCode
     if (self) {
         [self initializeData];
 //        [self.tableView registerNib:[UINib nibWithNibName:@"" bundle:nil] forCellReuseIdentifier:kESSCountryCodePickerReuseIdentifier];
+        
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPicker)];
     }
     return self;
 }
@@ -82,6 +48,7 @@ static NSString * const kESSCountryCodePickerReuseIdentifier = @"kESSCountryCode
 - (void)initializeData
 {
     self.defaultLocale = [NSLocale currentLocale];
+    self.selectedCountry = self.defaultCountry;
     
     self.countries = [NSMutableDictionary dictionary];
     for (NSString *regionCode in [CountryPicker countryCodes]) {
@@ -99,17 +66,13 @@ static NSString * const kESSCountryCodePickerReuseIdentifier = @"kESSCountryCode
     [titles insertObject:UITableViewIndexSearch atIndex:0];
     self.countrySectionTitles = titles;
     
-    [self reloadDefaultCountry];
+    [self reloadCountries];
 }
 
 /** Resets the first section of ::countries to reflect ::defaultLocale. */
-- (void)reloadDefaultCountry
+- (void)reloadCountries
 {
-    NSString *regionCode = nil;
-    NSString *name = nil;
-    NSString *callingCode = nil;
-    ESSCountry *defaultCountry = [ESSCountry countryWithRegionCode:regionCode name:name callingCode:callingCode];
-    self.countries[UITableViewIndexSearch] = @[defaultCountry];
+    self.countries[UITableViewIndexSearch] = @[self.defaultCountry];
 }
 
 - (void)viewDidLoad
@@ -131,7 +94,15 @@ static NSString * const kESSCountryCodePickerReuseIdentifier = @"kESSCountryCode
 - (void)setDefaultLocale:(NSLocale *)defaultLocale
 {
     _defaultLocale = defaultLocale;
-    [self reloadDefaultCountry];
+    [self reloadCountries];
+}
+
+- (ESSCountry *)defaultCountry
+{
+    NSString *regionCode = [self.defaultLocale objectForKey:NSLocaleCountryCode];
+    NSString *name = [[CountryPicker countryNamesByCode] objectForKey:regionCode];
+    NSString *callingCode = [[NBPhoneNumberUtil sharedInstance] countryCodeFromRegionCode:regionCode];
+    return [ESSCountry countryWithRegionCode:regionCode name:name callingCode:callingCode];
 }
 
 #pragma mark - Table view data source
@@ -157,9 +128,29 @@ static NSString * const kESSCountryCodePickerReuseIdentifier = @"kESSCountryCode
     NSString *sectionTitle = self.countrySectionTitles[indexPath.section];
     NSArray *sectionCountries = self.countries[sectionTitle];
     ESSCountry *country = sectionCountries[indexPath.row];
-    cell.textLabel.text = country.name;
+    cell.textLabel.text = [NSString stringWithFormat:@"+%@ %@", country.callingCode, country.name];
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return self.countrySectionTitles[section];
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return self.countrySectionTitles;
+}
+
+#pragma mark - Actions
+
+- (void)cancelPicker
+{
+    if ([self.delegate respondsToSelector:@selector(countryCodePickerDidCancel:)]) {
+        [self.delegate countryCodePickerDidCancel:self];
+    }
+    [self.navigationController dismissViewControllerAnimated:self completion:nil];
 }
 
 @end

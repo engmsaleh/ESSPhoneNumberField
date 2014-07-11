@@ -6,20 +6,24 @@
 //  Copyright (c) 2014 Erik Strottmann. All rights reserved.
 //
 
+#import "ESSCountry.h"
+
 #import <UIKit/UIKit.h>
 
 @class ESSCountryCodePicker;
 
+#pragma mark - ESSCountryCodePickerDelegate
 
 @protocol ESSCountryCodePickerDelegate <NSObject>
 
 @required
-- (void)countryCodePicker:(ESSCountryCodePicker *)countryCodePicker didSelectCountryWithCallingCode:(NSString *)callingCode;
+- (void)countryCodePicker:(ESSCountryCodePicker *)countryCodePicker didSelectCountry:(ESSCountry *)country;
 @optional
-- (void)countryCodePickerCanceled:(ESSCountryCodePicker *)countryCodePicker;
+- (void)countryCodePickerDidCancel:(ESSCountryCodePicker *)countryCodePicker;
 
 @end
 
+#pragma mark - ESSCountryCodePicker
 
 @interface ESSCountryCodePicker : UITableViewController
 
@@ -32,6 +36,11 @@
  * displayed at the top or selected by default.
  */
 @property (nonatomic) NSLocale *defaultLocale;
+/** To set, use ::defaultLocale. */
+@property (readonly, nonatomic) ESSCountry *defaultCountry;
+@property (nonatomic) ESSCountry *selectedCountry;
 
+/** Cancels the picker without changing ::selectedCountry. */
+- (void)cancelPicker;
 
 @end

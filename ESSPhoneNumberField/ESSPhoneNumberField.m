@@ -9,6 +9,9 @@
 #import "ESSPhoneNumberField.h"
 #import "ESSCountryCodePicker.h"
 
+#import "NBPhoneNumberUtil.h"
+#import "NBPhoneNumber.h"
+
 @interface ESSPhoneNumberField ()
 
 /**
@@ -19,19 +22,18 @@
  */
 @property (nonatomic) UIButton *countryCodeButton;
 /**
- * A text field where the user enters the local portion of the phone number,
- * ::localPhoneNumber.
+ * A text field where the user enters the national portion of the phone number,
+ * ::nationalPhoneNumber.
  */
-@property (nonatomic) UITextField *localPhoneNumberField;
-
-/** The country calling code displayed in the phone number field. */
-@property (nonatomic) NSString *countryCode;
-/** The local portion of the phone number displayed in the phone number field. */
-@property (nonatomic) NSString *localPhoneNumber;
+@property (nonatomic) UITextField *nationalPhoneNumberField;
 
 @end
 
 @implementation ESSPhoneNumberField
+
+#pragma mark - Constants
+
+static NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
 
 #pragma mark - Initialization
 
@@ -44,10 +46,22 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setUpSubviews];
+    }
+    return self;
+}
+
 - (void)setUpSubviews
 {
     self.countryCodeButton = [[UIButton alloc] init];
-    self.localPhoneNumberField = [[UITextField alloc] init];
+    [self addSubview:self.countryCodeButton];
+    
+    self.nationalPhoneNumberField = [[UITextField alloc] init];
+    [self addSubview:self.nationalPhoneNumberField];
     
     [self setUpAutolayout];
     [self resetVisualAttributes];
@@ -55,20 +69,70 @@
 
 - (void)setUpAutolayout
 {
-    #warning TODO: set up autolayout
+    self.countryCodeButton.translatesAutoresizingMaskIntoConstraints = NO;
+    self.nationalPhoneNumberField.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    NSArray *constraints = nil;
+    NSString *visualFormat = @"";
+    NSLayoutFormatOptions options = 0;
+    NSDictionary *metrics = @{};
+    NSDictionary *views = @{@"button" : self.countryCodeButton,
+                            @"field"  : self.nationalPhoneNumberField};
+    
+    visualFormat = @"H:|[button][field]|";
+    constraints = [NSLayoutConstraint constraintsWithVisualFormat:visualFormat
+                                                          options:options
+                                                          metrics:metrics
+                                                            views:views];
+    [self addConstraints:constraints];
+    
+    visualFormat = @"V:|[button]|";
+    constraints = [NSLayoutConstraint constraintsWithVisualFormat:visualFormat
+                                                          options:options
+                                                          metrics:metrics
+                                                            views:views];
+    [self addConstraints:constraints];
+    
+    visualFormat = @"V:|[field]|";
+    constraints = [NSLayoutConstraint constraintsWithVisualFormat:visualFormat
+                                                          options:options
+                                                          metrics:metrics
+                                                            views:views];
+    [self addConstraints:constraints];
+    
+    UIFont *font = self.countryCodeButton.titleLabel.font;
+    NSDictionary *attributes = @{NSFontAttributeName : font};
+    CGSize textSize = [kESSPhoneNumberFieldMaxWidthString sizeWithAttributes:attributes];
+    
+    NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:self.countryCodeButton
+                                                                  attribute:NSLayoutAttributeWidth
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:nil
+                                                                  attribute:NSLayoutAttributeWidth
+                                                                 multiplier:1
+                                                                   constant:textSize.width];
+    [self addConstraint:constraint];
 }
 
 - (void)resetVisualAttributes
 {
-    #warning TODO: reset visual attributes
+    self.countryCodeButton.backgroundColor = [UIColor grayColor];
+    self.countryCodeButton.titleLabel.textColor = [UIColor whiteColor];
+    self.nationalPhoneNumberField.backgroundColor = [UIColor lightGrayColor];
 }
 
 #pragma mark - Properties
 
 - (NSString *)phoneNumber
 {
-    #warning TODO: use libPhoneNumber to format phoneNumber
-    return [NSString stringWithFormat:@"+%@%@", self.countryCode, self.localPhoneNumber];
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    
+    NBPhoneNumber *phoneNumber = [[NBPhoneNumber alloc] init];
+    phoneNumber.countryCode = [formatter numberFromString:self.countryCode];
+    phoneNumber.nationalNumber = [formatter numberFromString:self.nationalPhoneNumber];
+    
+    return [[NBPhoneNumberUtil sharedInstance] format:phoneNumber numberFormat:NBEPhoneNumberFormatE164 error:nil];
 }
 
 - (void)setCountryCode:(NSString *)countryCode
@@ -77,17 +141,17 @@
     self.countryCodeButton.titleLabel.text = [NSString stringWithFormat:@"+%@", _countryCode];
 }
 
-- (void)setLocalPhoneNumber:(NSString *)localPhoneNumber
+- (void)setNationalPhoneNumber:(NSString *)nationalPhoneNumber
 {
-    _localPhoneNumber = localPhoneNumber;
-    self.localPhoneNumberField.text = _localPhoneNumber;
+    _nationalPhoneNumber = nationalPhoneNumber;
+    self.nationalPhoneNumberField.text = _nationalPhoneNumber;
 }
 
 #pragma mark - ESSCountryCodePickerDelegate
 
-- (void)countryCodePicker:(ESSCountryCodePicker *)countryCodePicker didSelectCountryWithCallingCode:(NSString *)callingCode
+- (void)countryCodePicker:(ESSCountryCodePicker *)countryCodePicker didSelectCountry:(ESSCountry *)country;
 {
-    self.countryCode = callingCode;
+    self.countryCode = country.callingCode;
 }
 
 @end
