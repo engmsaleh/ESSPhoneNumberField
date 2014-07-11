@@ -291,6 +291,8 @@
 		BBDB2174197006E000A0DE4C /* RMPhoneFormat-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBDB2059197006E000A0DE4C /* RMPhoneFormat-Info.plist */; };
 		BBDB2175197006E000A0DE4C /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB205C197006E000A0DE4C /* RMPhoneFormat.m */; };
 		BBDB2176197006E000A0DE4C /* RMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB205E197006E000A0DE4C /* RMViewController.m */; };
+		BBDB218419700C7100A0DE4C /* ESSPhoneNumberField.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB218319700C7100A0DE4C /* ESSPhoneNumberField.m */; };
+		BBDB21871970107700A0DE4C /* ESSCountryCodePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21861970107700A0DE4C /* ESSCountryCodePicker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -610,6 +612,10 @@
 		BBDB205D197006E000A0DE4C /* RMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMViewController.h; sourceTree = "<group>"; };
 		BBDB205E197006E000A0DE4C /* RMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMViewController.m; sourceTree = "<group>"; };
 		BBDB205F197006E000A0DE4C /* RMPhoneFormat.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = RMPhoneFormat.xcodeproj; sourceTree = "<group>"; };
+		BBDB218219700C7100A0DE4C /* ESSPhoneNumberField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSPhoneNumberField.h; sourceTree = "<group>"; };
+		BBDB218319700C7100A0DE4C /* ESSPhoneNumberField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSPhoneNumberField.m; sourceTree = "<group>"; };
+		BBDB21851970107700A0DE4C /* ESSCountryCodePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSCountryCodePicker.h; sourceTree = "<group>"; };
+		BBDB21861970107700A0DE4C /* ESSCountryCodePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSCountryCodePicker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -691,6 +697,10 @@
 		BBDB1F34197005A800A0DE4C /* ESSPhoneNumberField */ = {
 			isa = PBXGroup;
 			children = (
+				BBDB218219700C7100A0DE4C /* ESSPhoneNumberField.h */,
+				BBDB218319700C7100A0DE4C /* ESSPhoneNumberField.m */,
+				BBDB21851970107700A0DE4C /* ESSCountryCodePicker.h */,
+				BBDB21861970107700A0DE4C /* ESSCountryCodePicker.m */,
 			);
 			name = ESSPhoneNumberField;
 			path = ../../ESSPhoneNumberField;
@@ -1420,7 +1430,9 @@
 				BBDB1F151970056800A0DE4C /* ESSAppDelegate.m in Sources */,
 				BBDB2176197006E000A0DE4C /* RMViewController.m in Sources */,
 				BBDB2062197006E000A0DE4C /* CountryPicker.m in Sources */,
+				BBDB218419700C7100A0DE4C /* ESSPhoneNumberField.m in Sources */,
 				BBDB2173197006E000A0DE4C /* RMAppDelegate.m in Sources */,
+				BBDB21871970107700A0DE4C /* ESSCountryCodePicker.m in Sources */,
 				BBDB2171197006E000A0DE4C /* main.m in Sources */,
 				BBDB1F111970056800A0DE4C /* main.m in Sources */,
 			);
