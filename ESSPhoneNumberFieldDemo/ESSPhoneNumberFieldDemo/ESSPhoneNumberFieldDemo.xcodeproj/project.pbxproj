@@ -280,19 +280,40 @@
 		BBDB2169197006E000A0DE4C /* LICENCE.md in Resources */ = {isa = PBXBuildFile; fileRef = BBDB204A197006E000A0DE4C /* LICENCE.md */; };
 		BBDB216A197006E000A0DE4C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BBDB204B197006E000A0DE4C /* README.md */; };
 		BBDB216B197006E000A0DE4C /* RELEASE NOTES.md in Resources */ = {isa = PBXBuildFile; fileRef = BBDB204C197006E000A0DE4C /* RELEASE NOTES.md */; };
-		BBDB216C197006E000A0DE4C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BBDB204E197006E000A0DE4C /* README.md */; };
-		BBDB216D197006E000A0DE4C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBDB2050197006E000A0DE4C /* Default-568h@2x.png */; };
-		BBDB216E197006E000A0DE4C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BBDB2051197006E000A0DE4C /* Default.png */; };
-		BBDB216F197006E000A0DE4C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBDB2052197006E000A0DE4C /* Default@2x.png */; };
-		BBDB2170197006E000A0DE4C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBDB2053197006E000A0DE4C /* InfoPlist.strings */; };
-		BBDB2171197006E000A0DE4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB2055197006E000A0DE4C /* main.m */; };
-		BBDB2172197006E000A0DE4C /* PhoneFormats.dat in Resources */ = {isa = PBXBuildFile; fileRef = BBDB2056197006E000A0DE4C /* PhoneFormats.dat */; };
-		BBDB2173197006E000A0DE4C /* RMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB2058197006E000A0DE4C /* RMAppDelegate.m */; };
-		BBDB2174197006E000A0DE4C /* RMPhoneFormat-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBDB2059197006E000A0DE4C /* RMPhoneFormat-Info.plist */; };
-		BBDB2175197006E000A0DE4C /* RMPhoneFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB205C197006E000A0DE4C /* RMPhoneFormat.m */; };
-		BBDB2176197006E000A0DE4C /* RMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB205E197006E000A0DE4C /* RMViewController.m */; };
 		BBDB218419700C7100A0DE4C /* ESSPhoneNumberField.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB218319700C7100A0DE4C /* ESSPhoneNumberField.m */; };
 		BBDB21871970107700A0DE4C /* ESSCountryCodePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21861970107700A0DE4C /* ESSCountryCodePicker.m */; };
+		BBDB21BF19701EF700A0DE4C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = BBDB218919701EF700A0DE4C /* .gitignore */; };
+		BBDB21C019701EF700A0DE4C /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = BBDB218A19701EF700A0DE4C /* .travis.yml */; };
+		BBDB21C119701EF700A0DE4C /* AUTHORS in Resources */ = {isa = PBXBuildFile; fileRef = BBDB218B19701EF700A0DE4C /* AUTHORS */; };
+		BBDB21C219701EF700A0DE4C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB218E19701EF700A0DE4C /* AppDelegate.m */; };
+		BBDB21C319701EF700A0DE4C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBDB218F19701EF700A0DE4C /* Default-568h@2x.png */; };
+		BBDB21C419701EF700A0DE4C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BBDB219019701EF700A0DE4C /* Default.png */; };
+		BBDB21C519701EF700A0DE4C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBDB219119701EF700A0DE4C /* Default@2x.png */; };
+		BBDB21C619701EF700A0DE4C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBDB219219701EF700A0DE4C /* InfoPlist.strings */; };
+		BBDB21C719701EF700A0DE4C /* libPhoneNumber-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBDB219419701EF700A0DE4C /* libPhoneNumber-Info.plist */; };
+		BBDB21C819701EF700A0DE4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB219619701EF700A0DE4C /* main.m */; };
+		BBDB21C919701EF700A0DE4C /* NBPhoneNumberMetadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBDB219819701EF700A0DE4C /* NBPhoneNumberMetadata.plist */; };
+		BBDB21CA19701EF700A0DE4C /* NBPhoneNumberMetadataForTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBDB219919701EF700A0DE4C /* NBPhoneNumberMetadataForTesting.plist */; };
+		BBDB21CB19701EF700A0DE4C /* PhoneNumberMetaData.json in Resources */ = {isa = PBXBuildFile; fileRef = BBDB219A19701EF700A0DE4C /* PhoneNumberMetaData.json */; };
+		BBDB21CC19701EF700A0DE4C /* PhoneNumberMetaDataForTesting.json in Resources */ = {isa = PBXBuildFile; fileRef = BBDB219B19701EF700A0DE4C /* PhoneNumberMetaDataForTesting.json */; };
+		BBDB21CD19701EF700A0DE4C /* NBAsYouTypeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB219D19701EF700A0DE4C /* NBAsYouTypeFormatter.m */; };
+		BBDB21CE19701EF700A0DE4C /* NBNumberFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB219F19701EF700A0DE4C /* NBNumberFormat.m */; };
+		BBDB21CF19701EF700A0DE4C /* NBPhoneMetaClassGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21A119701EF700A0DE4C /* NBPhoneMetaClassGenerator.m */; };
+		BBDB21D019701EF700A0DE4C /* NBPhoneMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21A319701EF700A0DE4C /* NBPhoneMetaData.m */; };
+		BBDB21D119701EF700A0DE4C /* NBPhoneMetaDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21A519701EF700A0DE4C /* NBPhoneMetaDataGenerator.m */; };
+		BBDB21D219701EF700A0DE4C /* NBPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21A719701EF700A0DE4C /* NBPhoneNumber.m */; };
+		BBDB21D319701EF700A0DE4C /* NBPhoneNumberDesc.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21AA19701EF700A0DE4C /* NBPhoneNumberDesc.m */; };
+		BBDB21D419701EF700A0DE4C /* NBPhoneNumberUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21AC19701EF700A0DE4C /* NBPhoneNumberUtil.m */; };
+		BBDB21D519701EF700A0DE4C /* NSArray+NBAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21AE19701EF700A0DE4C /* NSArray+NBAdditions.m */; };
+		BBDB21D619701EF700A0DE4C /* libPhoneNumber-iOS.podspec in Resources */ = {isa = PBXBuildFile; fileRef = BBDB21AF19701EF700A0DE4C /* libPhoneNumber-iOS.podspec */; };
+		BBDB21D719701EF700A0DE4C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBDB21B419701EF700A0DE4C /* InfoPlist.strings */; };
+		BBDB21D819701EF700A0DE4C /* index.php in Resources */ = {isa = PBXBuildFile; fileRef = BBDB21B619701EF700A0DE4C /* index.php */; };
+		BBDB21D919701EF700A0DE4C /* libPhoneNumberGenerator.php in Resources */ = {isa = PBXBuildFile; fileRef = BBDB21B719701EF700A0DE4C /* libPhoneNumberGenerator.php */; };
+		BBDB21DA19701EF700A0DE4C /* libPhoneNumberTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBDB21B819701EF700A0DE4C /* libPhoneNumberTests-Info.plist */; };
+		BBDB21DB19701EF700A0DE4C /* NBAsYouTypeFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21BA19701EF700A0DE4C /* NBAsYouTypeFormatterTest.m */; };
+		BBDB21DC19701EF700A0DE4C /* NBPhoneNumberUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21BC19701EF700A0DE4C /* NBPhoneNumberUtilTests.m */; };
+		BBDB21DD19701EF700A0DE4C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = BBDB21BD19701EF700A0DE4C /* LICENSE */; };
+		BBDB21DE19701EF700A0DE4C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BBDB21BE19701EF700A0DE4C /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -303,12 +324,19 @@
 			remoteGlobalIDString = 01D39FAE14E60FBC002FC9B1;
 			remoteInfo = CountryPickerDemo;
 		};
-		BBDB217B197006E000A0DE4C /* PBXContainerItemProxy */ = {
+		BBDB21E119701EF700A0DE4C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BBDB205F197006E000A0DE4C /* RMPhoneFormat.xcodeproj */;
+			containerPortal = BBDB21B019701EF700A0DE4C /* libPhoneNumber.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 1D6A9832163D96A90005E74D;
-			remoteInfo = RMPhoneFormat;
+			remoteGlobalIDString = FD7A061C167715A0004BBEB6;
+			remoteInfo = libPhoneNumber;
+		};
+		BBDB21E319701EF700A0DE4C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BBDB21B019701EF700A0DE4C /* libPhoneNumber.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FD7A063D167715A1004BBEB6;
+			remoteInfo = libPhoneNumberTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -596,26 +624,57 @@
 		BBDB204A197006E000A0DE4C /* LICENCE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE.md; sourceTree = "<group>"; };
 		BBDB204B197006E000A0DE4C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		BBDB204C197006E000A0DE4C /* RELEASE NOTES.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "RELEASE NOTES.md"; sourceTree = "<group>"; };
-		BBDB204E197006E000A0DE4C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		BBDB2050197006E000A0DE4C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		BBDB2051197006E000A0DE4C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		BBDB2052197006E000A0DE4C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		BBDB2054197006E000A0DE4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BBDB2055197006E000A0DE4C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BBDB2056197006E000A0DE4C /* PhoneFormats.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = PhoneFormats.dat; sourceTree = "<group>"; };
-		BBDB2057197006E000A0DE4C /* RMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMAppDelegate.h; sourceTree = "<group>"; };
-		BBDB2058197006E000A0DE4C /* RMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMAppDelegate.m; sourceTree = "<group>"; };
-		BBDB2059197006E000A0DE4C /* RMPhoneFormat-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RMPhoneFormat-Info.plist"; sourceTree = "<group>"; };
-		BBDB205A197006E000A0DE4C /* RMPhoneFormat-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RMPhoneFormat-Prefix.pch"; sourceTree = "<group>"; };
-		BBDB205B197006E000A0DE4C /* RMPhoneFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMPhoneFormat.h; sourceTree = "<group>"; };
-		BBDB205C197006E000A0DE4C /* RMPhoneFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMPhoneFormat.m; sourceTree = "<group>"; };
-		BBDB205D197006E000A0DE4C /* RMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMViewController.h; sourceTree = "<group>"; };
-		BBDB205E197006E000A0DE4C /* RMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMViewController.m; sourceTree = "<group>"; };
-		BBDB205F197006E000A0DE4C /* RMPhoneFormat.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = RMPhoneFormat.xcodeproj; sourceTree = "<group>"; };
 		BBDB218219700C7100A0DE4C /* ESSPhoneNumberField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSPhoneNumberField.h; sourceTree = "<group>"; };
 		BBDB218319700C7100A0DE4C /* ESSPhoneNumberField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSPhoneNumberField.m; sourceTree = "<group>"; };
 		BBDB21851970107700A0DE4C /* ESSCountryCodePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSCountryCodePicker.h; sourceTree = "<group>"; };
 		BBDB21861970107700A0DE4C /* ESSCountryCodePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSCountryCodePicker.m; sourceTree = "<group>"; };
+		BBDB218919701EF700A0DE4C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		BBDB218A19701EF700A0DE4C /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		BBDB218B19701EF700A0DE4C /* AUTHORS */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
+		BBDB218D19701EF700A0DE4C /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BBDB218E19701EF700A0DE4C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BBDB218F19701EF700A0DE4C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BBDB219019701EF700A0DE4C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BBDB219119701EF700A0DE4C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BBDB219319701EF700A0DE4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BBDB219419701EF700A0DE4C /* libPhoneNumber-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "libPhoneNumber-Info.plist"; sourceTree = "<group>"; };
+		BBDB219519701EF700A0DE4C /* libPhoneNumber-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "libPhoneNumber-Prefix.pch"; sourceTree = "<group>"; };
+		BBDB219619701EF700A0DE4C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BBDB219819701EF700A0DE4C /* NBPhoneNumberMetadata.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = NBPhoneNumberMetadata.plist; sourceTree = "<group>"; };
+		BBDB219919701EF700A0DE4C /* NBPhoneNumberMetadataForTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = NBPhoneNumberMetadataForTesting.plist; sourceTree = "<group>"; };
+		BBDB219A19701EF700A0DE4C /* PhoneNumberMetaData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetaData.json; sourceTree = "<group>"; };
+		BBDB219B19701EF700A0DE4C /* PhoneNumberMetaDataForTesting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetaDataForTesting.json; sourceTree = "<group>"; };
+		BBDB219C19701EF700A0DE4C /* NBAsYouTypeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBAsYouTypeFormatter.h; sourceTree = "<group>"; };
+		BBDB219D19701EF700A0DE4C /* NBAsYouTypeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBAsYouTypeFormatter.m; sourceTree = "<group>"; };
+		BBDB219E19701EF700A0DE4C /* NBNumberFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBNumberFormat.h; sourceTree = "<group>"; };
+		BBDB219F19701EF700A0DE4C /* NBNumberFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBNumberFormat.m; sourceTree = "<group>"; };
+		BBDB21A019701EF700A0DE4C /* NBPhoneMetaClassGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneMetaClassGenerator.h; sourceTree = "<group>"; };
+		BBDB21A119701EF700A0DE4C /* NBPhoneMetaClassGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneMetaClassGenerator.m; sourceTree = "<group>"; };
+		BBDB21A219701EF700A0DE4C /* NBPhoneMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneMetaData.h; sourceTree = "<group>"; };
+		BBDB21A319701EF700A0DE4C /* NBPhoneMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneMetaData.m; sourceTree = "<group>"; };
+		BBDB21A419701EF700A0DE4C /* NBPhoneMetaDataGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneMetaDataGenerator.h; sourceTree = "<group>"; };
+		BBDB21A519701EF700A0DE4C /* NBPhoneMetaDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneMetaDataGenerator.m; sourceTree = "<group>"; };
+		BBDB21A619701EF700A0DE4C /* NBPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumber.h; sourceTree = "<group>"; };
+		BBDB21A719701EF700A0DE4C /* NBPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneNumber.m; sourceTree = "<group>"; };
+		BBDB21A819701EF700A0DE4C /* NBPhoneNumberDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberDefines.h; sourceTree = "<group>"; };
+		BBDB21A919701EF700A0DE4C /* NBPhoneNumberDesc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberDesc.h; sourceTree = "<group>"; };
+		BBDB21AA19701EF700A0DE4C /* NBPhoneNumberDesc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneNumberDesc.m; sourceTree = "<group>"; };
+		BBDB21AB19701EF700A0DE4C /* NBPhoneNumberUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberUtil.h; sourceTree = "<group>"; };
+		BBDB21AC19701EF700A0DE4C /* NBPhoneNumberUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneNumberUtil.m; sourceTree = "<group>"; };
+		BBDB21AD19701EF700A0DE4C /* NSArray+NBAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+NBAdditions.h"; sourceTree = "<group>"; };
+		BBDB21AE19701EF700A0DE4C /* NSArray+NBAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+NBAdditions.m"; sourceTree = "<group>"; };
+		BBDB21AF19701EF700A0DE4C /* libPhoneNumber-iOS.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "libPhoneNumber-iOS.podspec"; sourceTree = "<group>"; };
+		BBDB21B019701EF700A0DE4C /* libPhoneNumber.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = libPhoneNumber.xcodeproj; sourceTree = "<group>"; };
+		BBDB21B519701EF700A0DE4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BBDB21B619701EF700A0DE4C /* index.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = index.php; sourceTree = "<group>"; };
+		BBDB21B719701EF700A0DE4C /* libPhoneNumberGenerator.php */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.php; path = libPhoneNumberGenerator.php; sourceTree = "<group>"; };
+		BBDB21B819701EF700A0DE4C /* libPhoneNumberTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "libPhoneNumberTests-Info.plist"; sourceTree = "<group>"; };
+		BBDB21B919701EF700A0DE4C /* NBAsYouTypeFormatterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBAsYouTypeFormatterTest.h; sourceTree = "<group>"; };
+		BBDB21BA19701EF700A0DE4C /* NBAsYouTypeFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBAsYouTypeFormatterTest.m; sourceTree = "<group>"; };
+		BBDB21BB19701EF700A0DE4C /* NBPhoneNumberUtilTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBPhoneNumberUtilTests.h; sourceTree = "<group>"; };
+		BBDB21BC19701EF700A0DE4C /* NBPhoneNumberUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBPhoneNumberUtilTests.m; sourceTree = "<group>"; };
+		BBDB21BD19701EF700A0DE4C /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		BBDB21BE19701EF700A0DE4C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -688,7 +747,7 @@
 			isa = PBXGroup;
 			children = (
 				BBDB1F35197006DF00A0DE4C /* CountryPicker */,
-				BBDB204D197006E000A0DE4C /* RMPhoneFormat */,
+				BBDB218819701EF700A0DE4C /* libPhoneNumber-iOS */,
 			);
 			name = Vendor;
 			path = ../../ESSPhoneNumberField/Vendor;
@@ -1024,43 +1083,91 @@
 			path = Flags;
 			sourceTree = "<group>";
 		};
-		BBDB204D197006E000A0DE4C /* RMPhoneFormat */ = {
+		BBDB218819701EF700A0DE4C /* libPhoneNumber-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				BBDB204E197006E000A0DE4C /* README.md */,
-				BBDB204F197006E000A0DE4C /* RMPhoneFormat */,
-				BBDB205F197006E000A0DE4C /* RMPhoneFormat.xcodeproj */,
+				BBDB218919701EF700A0DE4C /* .gitignore */,
+				BBDB218A19701EF700A0DE4C /* .travis.yml */,
+				BBDB218B19701EF700A0DE4C /* AUTHORS */,
+				BBDB218C19701EF700A0DE4C /* libPhoneNumber */,
+				BBDB21AF19701EF700A0DE4C /* libPhoneNumber-iOS.podspec */,
+				BBDB21B019701EF700A0DE4C /* libPhoneNumber.xcodeproj */,
+				BBDB21B319701EF700A0DE4C /* libPhoneNumberTests */,
+				BBDB21BD19701EF700A0DE4C /* LICENSE */,
+				BBDB21BE19701EF700A0DE4C /* README.md */,
 			);
-			path = RMPhoneFormat;
+			path = "libPhoneNumber-iOS";
 			sourceTree = "<group>";
 		};
-		BBDB204F197006E000A0DE4C /* RMPhoneFormat */ = {
+		BBDB218C19701EF700A0DE4C /* libPhoneNumber */ = {
 			isa = PBXGroup;
 			children = (
-				BBDB2050197006E000A0DE4C /* Default-568h@2x.png */,
-				BBDB2051197006E000A0DE4C /* Default.png */,
-				BBDB2052197006E000A0DE4C /* Default@2x.png */,
-				BBDB2053197006E000A0DE4C /* InfoPlist.strings */,
-				BBDB2055197006E000A0DE4C /* main.m */,
-				BBDB2056197006E000A0DE4C /* PhoneFormats.dat */,
-				BBDB2057197006E000A0DE4C /* RMAppDelegate.h */,
-				BBDB2058197006E000A0DE4C /* RMAppDelegate.m */,
-				BBDB2059197006E000A0DE4C /* RMPhoneFormat-Info.plist */,
-				BBDB205A197006E000A0DE4C /* RMPhoneFormat-Prefix.pch */,
-				BBDB205B197006E000A0DE4C /* RMPhoneFormat.h */,
-				BBDB205C197006E000A0DE4C /* RMPhoneFormat.m */,
-				BBDB205D197006E000A0DE4C /* RMViewController.h */,
-				BBDB205E197006E000A0DE4C /* RMViewController.m */,
+				BBDB218D19701EF700A0DE4C /* AppDelegate.h */,
+				BBDB218E19701EF700A0DE4C /* AppDelegate.m */,
+				BBDB218F19701EF700A0DE4C /* Default-568h@2x.png */,
+				BBDB219019701EF700A0DE4C /* Default.png */,
+				BBDB219119701EF700A0DE4C /* Default@2x.png */,
+				BBDB219219701EF700A0DE4C /* InfoPlist.strings */,
+				BBDB219419701EF700A0DE4C /* libPhoneNumber-Info.plist */,
+				BBDB219519701EF700A0DE4C /* libPhoneNumber-Prefix.pch */,
+				BBDB219619701EF700A0DE4C /* main.m */,
+				BBDB219719701EF700A0DE4C /* Metadata Classes */,
+				BBDB219C19701EF700A0DE4C /* NBAsYouTypeFormatter.h */,
+				BBDB219D19701EF700A0DE4C /* NBAsYouTypeFormatter.m */,
+				BBDB219E19701EF700A0DE4C /* NBNumberFormat.h */,
+				BBDB219F19701EF700A0DE4C /* NBNumberFormat.m */,
+				BBDB21A019701EF700A0DE4C /* NBPhoneMetaClassGenerator.h */,
+				BBDB21A119701EF700A0DE4C /* NBPhoneMetaClassGenerator.m */,
+				BBDB21A219701EF700A0DE4C /* NBPhoneMetaData.h */,
+				BBDB21A319701EF700A0DE4C /* NBPhoneMetaData.m */,
+				BBDB21A419701EF700A0DE4C /* NBPhoneMetaDataGenerator.h */,
+				BBDB21A519701EF700A0DE4C /* NBPhoneMetaDataGenerator.m */,
+				BBDB21A619701EF700A0DE4C /* NBPhoneNumber.h */,
+				BBDB21A719701EF700A0DE4C /* NBPhoneNumber.m */,
+				BBDB21A819701EF700A0DE4C /* NBPhoneNumberDefines.h */,
+				BBDB21A919701EF700A0DE4C /* NBPhoneNumberDesc.h */,
+				BBDB21AA19701EF700A0DE4C /* NBPhoneNumberDesc.m */,
+				BBDB21AB19701EF700A0DE4C /* NBPhoneNumberUtil.h */,
+				BBDB21AC19701EF700A0DE4C /* NBPhoneNumberUtil.m */,
+				BBDB21AD19701EF700A0DE4C /* NSArray+NBAdditions.h */,
+				BBDB21AE19701EF700A0DE4C /* NSArray+NBAdditions.m */,
 			);
-			path = RMPhoneFormat;
+			path = libPhoneNumber;
 			sourceTree = "<group>";
 		};
-		BBDB2060197006E000A0DE4C /* Products */ = {
+		BBDB219719701EF700A0DE4C /* Metadata Classes */ = {
 			isa = PBXGroup;
 			children = (
-				BBDB217C197006E000A0DE4C /* RMPhoneFormat.app */,
+				BBDB219819701EF700A0DE4C /* NBPhoneNumberMetadata.plist */,
+				BBDB219919701EF700A0DE4C /* NBPhoneNumberMetadataForTesting.plist */,
+				BBDB219A19701EF700A0DE4C /* PhoneNumberMetaData.json */,
+				BBDB219B19701EF700A0DE4C /* PhoneNumberMetaDataForTesting.json */,
+			);
+			path = "Metadata Classes";
+			sourceTree = "<group>";
+		};
+		BBDB21B119701EF700A0DE4C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BBDB21E219701EF700A0DE4C /* libPhoneNumber.app */,
+				BBDB21E419701EF700A0DE4C /* libPhoneNumberTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BBDB21B319701EF700A0DE4C /* libPhoneNumberTests */ = {
+			isa = PBXGroup;
+			children = (
+				BBDB21B419701EF700A0DE4C /* InfoPlist.strings */,
+				BBDB21B619701EF700A0DE4C /* index.php */,
+				BBDB21B719701EF700A0DE4C /* libPhoneNumberGenerator.php */,
+				BBDB21B819701EF700A0DE4C /* libPhoneNumberTests-Info.plist */,
+				BBDB21B919701EF700A0DE4C /* NBAsYouTypeFormatterTest.h */,
+				BBDB21BA19701EF700A0DE4C /* NBAsYouTypeFormatterTest.m */,
+				BBDB21BB19701EF700A0DE4C /* NBPhoneNumberUtilTests.h */,
+				BBDB21BC19701EF700A0DE4C /* NBPhoneNumberUtilTests.m */,
+			);
+			path = libPhoneNumberTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1109,8 +1216,8 @@
 					ProjectRef = BBDB1F48197006DF00A0DE4C /* CountryPickerDemo.xcodeproj */;
 				},
 				{
-					ProductGroup = BBDB2060197006E000A0DE4C /* Products */;
-					ProjectRef = BBDB205F197006E000A0DE4C /* RMPhoneFormat.xcodeproj */;
+					ProductGroup = BBDB21B119701EF700A0DE4C /* Products */;
+					ProjectRef = BBDB21B019701EF700A0DE4C /* libPhoneNumber.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1128,11 +1235,18 @@
 			remoteRef = BBDB2178197006E000A0DE4C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		BBDB217C197006E000A0DE4C /* RMPhoneFormat.app */ = {
+		BBDB21E219701EF700A0DE4C /* libPhoneNumber.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
-			path = RMPhoneFormat.app;
-			remoteRef = BBDB217B197006E000A0DE4C /* PBXContainerItemProxy */;
+			path = libPhoneNumber.app;
+			remoteRef = BBDB21E119701EF700A0DE4C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BBDB21E419701EF700A0DE4C /* libPhoneNumberTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = libPhoneNumberTests.xctest;
+			remoteRef = BBDB21E319701EF700A0DE4C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1149,12 +1263,12 @@
 				BBDB20A4197006E000A0DE4C /* CZ.png in Resources */,
 				BBDB2159197006E000A0DE4C /* VA.png in Resources */,
 				BBDB20D7197006E000A0DE4C /* IO.png in Resources */,
+				BBDB21D819701EF700A0DE4C /* index.php in Resources */,
 				BBDB209A197006E000A0DE4C /* CL.png in Resources */,
 				BBDB2156197006E000A0DE4C /* US.png in Resources */,
 				BBDB20C8197006E000A0DE4C /* GT.png in Resources */,
 				BBDB20E8197006E000A0DE4C /* KW.png in Resources */,
 				BBDB209B197006E000A0DE4C /* CM.png in Resources */,
-				BBDB216C197006E000A0DE4C /* README.md in Resources */,
 				BBDB20B9197006E000A0DE4C /* GA.png in Resources */,
 				BBDB2168197006E000A0DE4C /* ZW.png in Resources */,
 				BBDB216A197006E000A0DE4C /* README.md in Resources */,
@@ -1165,6 +1279,7 @@
 				BBDB2097197006E000A0DE4C /* CH.png in Resources */,
 				BBDB2124197006E000A0DE4C /* PS.png in Resources */,
 				BBDB2153197006E000A0DE4C /* UA.png in Resources */,
+				BBDB21C319701EF700A0DE4C /* Default-568h@2x.png in Resources */,
 				BBDB2128197006E000A0DE4C /* QA.png in Resources */,
 				BBDB20B5197006E000A0DE4C /* FM.png in Resources */,
 				BBDB207D197006E000A0DE4C /* BA.png in Resources */,
@@ -1182,9 +1297,12 @@
 				BBDB20E7197006E000A0DE4C /* KR.png in Resources */,
 				BBDB210A197006E000A0DE4C /* MX.png in Resources */,
 				BBDB2090197006E000A0DE4C /* BY.png in Resources */,
+				BBDB21DE19701EF700A0DE4C /* README.md in Resources */,
 				BBDB20AC197006E000A0DE4C /* EE.png in Resources */,
 				BBDB20CD197006E000A0DE4C /* HM.png in Resources */,
 				BBDB20A2197006E000A0DE4C /* CX.png in Resources */,
+				BBDB21D619701EF700A0DE4C /* libPhoneNumber-iOS.podspec in Resources */,
+				BBDB21CC19701EF700A0DE4C /* PhoneNumberMetaDataForTesting.json in Resources */,
 				BBDB20B6197006E000A0DE4C /* FO.png in Resources */,
 				BBDB20A7197006E000A0DE4C /* DK.png in Resources */,
 				BBDB215C197006E000A0DE4C /* VG.png in Resources */,
@@ -1227,6 +1345,7 @@
 				BBDB20CA197006E000A0DE4C /* GW.png in Resources */,
 				BBDB20C7197006E000A0DE4C /* GS.png in Resources */,
 				BBDB2103197006E000A0DE4C /* MQ.png in Resources */,
+				BBDB21C119701EF700A0DE4C /* AUTHORS in Resources */,
 				BBDB206F197006E000A0DE4C /* AG.png in Resources */,
 				BBDB2063197006E000A0DE4C /* CountryPicker.podspec in Resources */,
 				BBDB214B197006E000A0DE4C /* TM.png in Resources */,
@@ -1238,7 +1357,6 @@
 				BBDB20FC197006E000A0DE4C /* MH.png in Resources */,
 				BBDB20E9197006E000A0DE4C /* KY.png in Resources */,
 				BBDB210C197006E000A0DE4C /* MZ.png in Resources */,
-				BBDB2174197006E000A0DE4C /* RMPhoneFormat-Info.plist in Resources */,
 				BBDB2141197006E000A0DE4C /* SY.png in Resources */,
 				BBDB212A197006E000A0DE4C /* RO.png in Resources */,
 				BBDB208A197006E000A0DE4C /* BQ.png in Resources */,
@@ -1247,6 +1365,7 @@
 				BBDB20E4197006E000A0DE4C /* KM.png in Resources */,
 				BBDB2161197006E000A0DE4C /* WS.png in Resources */,
 				BBDB2139197006E000A0DE4C /* SM.png in Resources */,
+				BBDB21C719701EF700A0DE4C /* libPhoneNumber-Info.plist in Resources */,
 				BBDB20F4197006E000A0DE4C /* LV.png in Resources */,
 				BBDB20B4197006E000A0DE4C /* FK.png in Resources */,
 				BBDB2108197006E000A0DE4C /* MV.png in Resources */,
@@ -1257,9 +1376,11 @@
 				BBDB2099197006E000A0DE4C /* CK.png in Resources */,
 				BBDB2154197006E000A0DE4C /* UG.png in Resources */,
 				BBDB2137197006E000A0DE4C /* SK.png in Resources */,
+				BBDB21C519701EF700A0DE4C /* Default@2x.png in Resources */,
 				BBDB2122197006E000A0DE4C /* PN.png in Resources */,
 				BBDB20A1197006E000A0DE4C /* CW.png in Resources */,
 				BBDB2077197006E000A0DE4C /* AS.png in Resources */,
+				BBDB21D719701EF700A0DE4C /* InfoPlist.strings in Resources */,
 				BBDB2166197006E000A0DE4C /* ZA.png in Resources */,
 				BBDB20C0197006E000A0DE4C /* GI.png in Resources */,
 				BBDB2138197006E000A0DE4C /* SL.png in Resources */,
@@ -1278,7 +1399,6 @@
 				BBDB2074197006E000A0DE4C /* AO.png in Resources */,
 				BBDB2107197006E000A0DE4C /* MU.png in Resources */,
 				BBDB2143197006E000A0DE4C /* TC.png in Resources */,
-				BBDB2170197006E000A0DE4C /* InfoPlist.strings in Resources */,
 				BBDB20FD197006E000A0DE4C /* MK.png in Resources */,
 				BBDB2081197006E000A0DE4C /* BF.png in Resources */,
 				BBDB2071197006E000A0DE4C /* AL.png in Resources */,
@@ -1289,8 +1409,8 @@
 				BBDB20A5197006E000A0DE4C /* DE.png in Resources */,
 				BBDB2082197006E000A0DE4C /* BG.png in Resources */,
 				BBDB20E0197006E000A0DE4C /* KE.png in Resources */,
-				BBDB216D197006E000A0DE4C /* Default-568h@2x.png in Resources */,
 				BBDB207F197006E000A0DE4C /* BD.png in Resources */,
+				BBDB21C419701EF700A0DE4C /* Default.png in Resources */,
 				BBDB20FF197006E000A0DE4C /* MM.png in Resources */,
 				BBDB2144197006E000A0DE4C /* TD.png in Resources */,
 				BBDB211D197006E000A0DE4C /* PG.png in Resources */,
@@ -1300,19 +1420,17 @@
 				BBDB2120197006E000A0DE4C /* PL.png in Resources */,
 				BBDB2129197006E000A0DE4C /* RE.png in Resources */,
 				BBDB20B1197006E000A0DE4C /* ET.png in Resources */,
-				BBDB216F197006E000A0DE4C /* Default@2x.png in Resources */,
 				BBDB20DE197006E000A0DE4C /* JO.png in Resources */,
-				BBDB216E197006E000A0DE4C /* Default.png in Resources */,
 				BBDB213F197006E000A0DE4C /* SV.png in Resources */,
 				BBDB20E3197006E000A0DE4C /* KI.png in Resources */,
 				BBDB20C4197006E000A0DE4C /* GP.png in Resources */,
-				BBDB2172197006E000A0DE4C /* PhoneFormats.dat in Resources */,
 				BBDB20BA197006E000A0DE4C /* GB.png in Resources */,
 				BBDB20EA197006E000A0DE4C /* KZ.png in Resources */,
 				BBDB212F197006E000A0DE4C /* SB.png in Resources */,
 				BBDB210D197006E000A0DE4C /* NA.png in Resources */,
 				BBDB2088197006E000A0DE4C /* BN.png in Resources */,
 				BBDB20CE197006E000A0DE4C /* HN.png in Resources */,
+				BBDB21CB19701EF700A0DE4C /* PhoneNumberMetaData.json in Resources */,
 				BBDB2121197006E000A0DE4C /* PM.png in Resources */,
 				BBDB2093197006E000A0DE4C /* CC.png in Resources */,
 				BBDB20F6197006E000A0DE4C /* MA.png in Resources */,
@@ -1350,6 +1468,7 @@
 				BBDB215B197006E000A0DE4C /* VE.png in Resources */,
 				BBDB20ED197006E000A0DE4C /* LC.png in Resources */,
 				BBDB2150197006E000A0DE4C /* TV.png in Resources */,
+				BBDB21BF19701EF700A0DE4C /* .gitignore in Resources */,
 				BBDB20D4197006E000A0DE4C /* IL.png in Resources */,
 				BBDB208F197006E000A0DE4C /* BW.png in Resources */,
 				BBDB20BC197006E000A0DE4C /* GE.png in Resources */,
@@ -1363,6 +1482,7 @@
 				BBDB212C197006E000A0DE4C /* RU.png in Resources */,
 				BBDB2072197006E000A0DE4C /* AM.png in Resources */,
 				BBDB2123197006E000A0DE4C /* PR.png in Resources */,
+				BBDB21C019701EF700A0DE4C /* .travis.yml in Resources */,
 				BBDB2114197006E000A0DE4C /* NO.png in Resources */,
 				BBDB20D6197006E000A0DE4C /* IN.png in Resources */,
 				BBDB206B197006E000A0DE4C /* AC.png in Resources */,
@@ -1387,11 +1507,13 @@
 				BBDB210B197006E000A0DE4C /* MY.png in Resources */,
 				BBDB215F197006E000A0DE4C /* VU.png in Resources */,
 				BBDB20A0197006E000A0DE4C /* CV.png in Resources */,
+				BBDB21CA19701EF700A0DE4C /* NBPhoneNumberMetadataForTesting.plist in Resources */,
 				BBDB215A197006E000A0DE4C /* VC.png in Resources */,
 				BBDB211B197006E000A0DE4C /* PE.png in Resources */,
 				BBDB2130197006E000A0DE4C /* SC.png in Resources */,
 				BBDB20D1197006E000A0DE4C /* HU.png in Resources */,
 				BBDB2096197006E000A0DE4C /* CG.png in Resources */,
+				BBDB21D919701EF700A0DE4C /* libPhoneNumberGenerator.php in Resources */,
 				BBDB20D3197006E000A0DE4C /* IE.png in Resources */,
 				BBDB20DB197006E000A0DE4C /* IT.png in Resources */,
 				BBDB208D197006E000A0DE4C /* BT.png in Resources */,
@@ -1401,17 +1523,21 @@
 				BBDB2152197006E000A0DE4C /* TZ.png in Resources */,
 				BBDB20CC197006E000A0DE4C /* HK.png in Resources */,
 				BBDB211C197006E000A0DE4C /* PF.png in Resources */,
+				BBDB21C619701EF700A0DE4C /* InfoPlist.strings in Resources */,
 				BBDB212B197006E000A0DE4C /* RS.png in Resources */,
 				BBDB20F1197006E000A0DE4C /* LS.png in Resources */,
 				BBDB2085197006E000A0DE4C /* BJ.png in Resources */,
 				BBDB20FE197006E000A0DE4C /* ML.png in Resources */,
 				BBDB2112197006E000A0DE4C /* NI.png in Resources */,
 				BBDB214A197006E000A0DE4C /* TL.png in Resources */,
+				BBDB21DD19701EF700A0DE4C /* LICENSE in Resources */,
+				BBDB21C919701EF700A0DE4C /* NBPhoneNumberMetadata.plist in Resources */,
 				BBDB2115197006E000A0DE4C /* NP.png in Resources */,
 				BBDB2157197006E000A0DE4C /* UY.png in Resources */,
 				BBDB206E197006E000A0DE4C /* AF.png in Resources */,
 				BBDB1F171970056800A0DE4C /* Images.xcassets in Resources */,
 				BBDB20DA197006E000A0DE4C /* IS.png in Resources */,
+				BBDB21DA19701EF700A0DE4C /* libPhoneNumberTests-Info.plist in Resources */,
 				BBDB20A6197006E000A0DE4C /* DJ.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1424,16 +1550,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBDB206A197006E000A0DE4C /* ViewController.m in Sources */,
+				BBDB21CD19701EF700A0DE4C /* NBAsYouTypeFormatter.m in Sources */,
+				BBDB21D519701EF700A0DE4C /* NSArray+NBAdditions.m in Sources */,
 				BBDB2069197006E000A0DE4C /* main.m in Sources */,
+				BBDB21D319701EF700A0DE4C /* NBPhoneNumberDesc.m in Sources */,
 				BBDB2064197006E000A0DE4C /* AppDelegate.m in Sources */,
-				BBDB2175197006E000A0DE4C /* RMPhoneFormat.m in Sources */,
 				BBDB1F151970056800A0DE4C /* ESSAppDelegate.m in Sources */,
-				BBDB2176197006E000A0DE4C /* RMViewController.m in Sources */,
+				BBDB21CF19701EF700A0DE4C /* NBPhoneMetaClassGenerator.m in Sources */,
+				BBDB21D419701EF700A0DE4C /* NBPhoneNumberUtil.m in Sources */,
 				BBDB2062197006E000A0DE4C /* CountryPicker.m in Sources */,
+				BBDB21D219701EF700A0DE4C /* NBPhoneNumber.m in Sources */,
+				BBDB21D119701EF700A0DE4C /* NBPhoneMetaDataGenerator.m in Sources */,
+				BBDB21C219701EF700A0DE4C /* AppDelegate.m in Sources */,
 				BBDB218419700C7100A0DE4C /* ESSPhoneNumberField.m in Sources */,
-				BBDB2173197006E000A0DE4C /* RMAppDelegate.m in Sources */,
+				BBDB21DC19701EF700A0DE4C /* NBPhoneNumberUtilTests.m in Sources */,
 				BBDB21871970107700A0DE4C /* ESSCountryCodePicker.m in Sources */,
-				BBDB2171197006E000A0DE4C /* main.m in Sources */,
+				BBDB21CE19701EF700A0DE4C /* NBNumberFormat.m in Sources */,
+				BBDB21DB19701EF700A0DE4C /* NBAsYouTypeFormatterTest.m in Sources */,
+				BBDB21D019701EF700A0DE4C /* NBPhoneMetaData.m in Sources */,
+				BBDB21C819701EF700A0DE4C /* main.m in Sources */,
 				BBDB1F111970056800A0DE4C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1465,10 +1600,18 @@
 			name = ViewController.xib;
 			sourceTree = "<group>";
 		};
-		BBDB2053197006E000A0DE4C /* InfoPlist.strings */ = {
+		BBDB219219701EF700A0DE4C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BBDB2054197006E000A0DE4C /* en */,
+				BBDB219319701EF700A0DE4C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BBDB21B419701EF700A0DE4C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BBDB21B519701EF700A0DE4C /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
