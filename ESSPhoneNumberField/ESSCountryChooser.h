@@ -1,5 +1,5 @@
 //
-//  ESSCountryCodePicker.h
+//  ESSCountryChooser.h
 //  ESSPhoneNumberFieldDemo
 //
 //  Created by Erik Strottmann on 7/11/14.
@@ -10,24 +10,24 @@
 
 #import <UIKit/UIKit.h>
 
-@class ESSCountryCodePicker;
+@class ESSCountryChooser;
 
-#pragma mark - ESSCountryCodePickerDelegate
+#pragma mark - ESSCountryChooserDelegate
 
-@protocol ESSCountryCodePickerDelegate <NSObject>
+@protocol ESSCountryChooserDelegate <NSObject>
 
 @required
-- (void)countryCodePicker:(ESSCountryCodePicker *)countryCodePicker didSelectCountry:(ESSCountry *)country;
+- (void)countryChooser:(ESSCountryChooser *)countryChooser didSelectCountry:(ESSCountry *)country;
 @optional
-- (void)countryCodePickerDidCancel:(ESSCountryCodePicker *)countryCodePicker;
+- (void)countryChooserDidCancel:(ESSCountryChooser *)countryChooser;
 
 @end
 
-#pragma mark - ESSCountryCodePicker
+#pragma mark - ESSCountryChooser
 
-@interface ESSCountryCodePicker : UITableViewController
+@interface ESSCountryChooser : UITableViewController
 
-@property (weak, nonatomic) id<ESSCountryCodePickerDelegate> delegate;
+@property (weak, nonatomic) id<ESSCountryChooserDelegate> delegate;
 
 /**
  * The row containing the default locale, and its corresponding country code, is
@@ -40,7 +40,7 @@
 @property (readonly, nonatomic) ESSCountry *defaultCountry;
 @property (nonatomic) ESSCountry *selectedCountry;
 
-/** Cancels the picker without changing ::selectedCountry. */
-- (void)cancelPicker;
+/** Cancels the chooser without changing ::selectedCountry. */
+- (void)cancelChooser;
 
 @end

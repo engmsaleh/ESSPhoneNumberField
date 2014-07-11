@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ESSCountryCodePicker.h"
+#import "ESSCountryChooser.h"
 
-@interface ESSPhoneNumberField : UIControl <ESSCountryCodePickerDelegate>
+@interface ESSPhoneNumberField : UIControl <ESSCountryChooserDelegate>
 
 /**
  * A button designed to present a modal ESSCountryCodePicker when tapped.

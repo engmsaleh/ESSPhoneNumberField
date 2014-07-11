@@ -7,7 +7,7 @@
 //
 
 #import "ESSPhoneNumberField.h"
-#import "ESSCountryCodePicker.h"
+#import "ESSCountryChooser.h"
 
 #import "NBPhoneNumberUtil.h"
 #import "NBPhoneNumber.h"
@@ -15,10 +15,9 @@
 @interface ESSPhoneNumberField ()
 
 /**
- * A button designed to present a modal ESSCountryCodePicker when tapped.
- * Displays ::countryCode. Recommended use: present a modal country code picker
- * on touch up inside this button, and set the phone number field as its
- * delegate.
+ * A button designed to present a modal ESSCountryChooser when tapped. Displays
+ * ::countryCode. Recommended use: present a modal country chooser on touch up
+ * inside this button, and set the phone number field as its delegate.
  */
 @property (nonatomic) UIButton *countryCodeButton;
 /**
@@ -147,9 +146,9 @@ static NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
     self.nationalPhoneNumberField.text = _nationalPhoneNumber;
 }
 
-#pragma mark - ESSCountryCodePickerDelegate
+#pragma mark - ESSCountryChooserDelegate
 
-- (void)countryCodePicker:(ESSCountryCodePicker *)countryCodePicker didSelectCountry:(ESSCountry *)country;
+- (void)countryChooser:(ESSCountryChooser *)countryChooser didSelectCountry:(ESSCountry *)country;
 {
     self.countryCode = country.callingCode;
 }

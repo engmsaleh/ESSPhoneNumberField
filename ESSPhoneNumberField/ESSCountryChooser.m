@@ -1,17 +1,17 @@
 //
-//  ESSCountryCodePicker.m
+//  ESSCountryChooser.m
 //  ESSPhoneNumberFieldDemo
 //
 //  Created by Erik Strottmann on 7/11/14.
 //  Copyright (c) 2014 Erik Strottmann. All rights reserved.
 //
 
-#import "ESSCountryCodePicker.h"
+#import "ESSCountryChooser.h"
 
 #import "CountryPicker.h"
 #import "NBPhoneNumberUtil.h"
 
-@interface ESSCountryCodePicker ()
+@interface ESSCountryChooser ()
 
 /**
  * Mutable dictionary of NSArrays where keys are section titles and values are
@@ -24,12 +24,12 @@
 
 @end
 
-@implementation ESSCountryCodePicker
+@implementation ESSCountryChooser
 
 #pragma mark - Constants
 
 /** Reuse identifier for table view cells. */
-static NSString * const kESSCountryCodePickerReuseIdentifier = @"kESSCountryCodePickerReuseIdentifier";
+static NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooserReuseIdentifier";
 
 #pragma mark - Initialization
 
@@ -38,9 +38,9 @@ static NSString * const kESSCountryCodePickerReuseIdentifier = @"kESSCountryCode
     self = [super initWithStyle:style];
     if (self) {
         [self initializeData];
-//        [self.tableView registerNib:[UINib nibWithNibName:@"" bundle:nil] forCellReuseIdentifier:kESSCountryCodePickerReuseIdentifier];
+//        [self.tableView registerNib:[UINib nibWithNibName:@"" bundle:nil] forCellReuseIdentifier:kESSCountryChooserReuseIdentifier];
         
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelPicker)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelChooser)];
     }
     return self;
 }
@@ -121,9 +121,9 @@ static NSString * const kESSCountryCodePickerReuseIdentifier = @"kESSCountryCode
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kESSCountryCodePickerReuseIdentifier forIndexPath:indexPath];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kESSCountryChooserReuseIdentifier forIndexPath:indexPath];
     
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kESSCountryCodePickerReuseIdentifier];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kESSCountryChooserReuseIdentifier];
     
     NSString *sectionTitle = self.countrySectionTitles[indexPath.section];
     NSArray *sectionCountries = self.countries[sectionTitle];
@@ -145,10 +145,10 @@ static NSString * const kESSCountryCodePickerReuseIdentifier = @"kESSCountryCode
 
 #pragma mark - Actions
 
-- (void)cancelPicker
+- (void)cancelChooser
 {
-    if ([self.delegate respondsToSelector:@selector(countryCodePickerDidCancel:)]) {
-        [self.delegate countryCodePickerDidCancel:self];
+    if ([self.delegate respondsToSelector:@selector(countryChooserDidCancel:)]) {
+        [self.delegate countryChooserDidCancel:self];
     }
     [self.navigationController dismissViewControllerAnimated:self completion:nil];
 }

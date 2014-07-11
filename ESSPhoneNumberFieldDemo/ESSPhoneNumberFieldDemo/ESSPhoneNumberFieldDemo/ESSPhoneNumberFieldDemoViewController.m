@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet ESSPhoneNumberField *phoneNumberField;
 @property (nonatomic) UINavigationController *modalNavigationController;
-@property (nonatomic) ESSCountryCodePicker *countryCodePicker;
+@property (nonatomic) ESSCountryChooser *countryCodePicker;
 
 @end
 
@@ -28,7 +28,7 @@ static NSString * const kESSPhoneNumberFieldDemoDefaultLabelText = @"Enter a pho
     
     self.label.text = kESSPhoneNumberFieldDemoDefaultLabelText;
     
-    self.countryCodePicker = [[ESSCountryCodePicker alloc] initWithStyle:UITableViewStylePlain];
+    self.countryCodePicker = [[ESSCountryChooser alloc] initWithStyle:UITableViewStylePlain];
     self.countryCodePicker.delegate = self.phoneNumberField;
     
     self.modalNavigationController = [[UINavigationController alloc] initWithRootViewController:self.countryCodePicker];
