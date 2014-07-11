@@ -27,6 +27,9 @@
 
 @interface ESSCountryChooser : UITableViewController
 
+/** Default value for ::defaultSectionTitle. */
+extern NSString * const kESSCountryChooserDefaultDefaultSectionTitle;
+
 @property (weak, nonatomic) id<ESSCountryChooserDelegate> delegate;
 
 /**
@@ -39,6 +42,8 @@
 /** To set, use ::defaultLocale. */
 @property (readonly, nonatomic) ESSCountry *defaultCountry;
 @property (nonatomic) ESSCountry *selectedCountry;
+/** The title for the "default" section, if present. */
+@property (nonatomic) NSString *defaultSectionTitle;
 
 /** Cancels the chooser without changing ::selectedCountry. */
 - (void)cancelChooser;

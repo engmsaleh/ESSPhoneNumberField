@@ -19,8 +19,10 @@
  * section, countries are sorted alphabetically.
  */
 @property (nonatomic) NSMutableDictionary *countries;
-/** Equivalent to [countries allKeys]. */
-@property (nonatomic) NSArray *countrySectionTitles;
+/** Equivalent to [countries allKeys]. The titles for section headers. */
+@property (nonatomic) NSMutableArray *countrySectionTitles;
+/** The titles for the section index (quick jump) on the right of the screen. */
+@property (nonatomic) NSMutableArray *countryIndexTitles;
 
 @end
 
@@ -28,8 +30,10 @@
 
 #pragma mark - Constants
 
+/** Default value for ::defaultSectionTitle. */
+NSString * const kESSCountryChooserDefaultDefaultSectionTitle = @"Current Region";
 /** Reuse identifier for table view cells. */
-static NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooserReuseIdentifier";
+NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooserReuseIdentifier";
 
 #pragma mark - Initialization
 
@@ -40,7 +44,7 @@ static NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooser
         [self initializeData];
 //        [self.tableView registerNib:[UINib nibWithNibName:@"" bundle:nil] forCellReuseIdentifier:kESSCountryChooserReuseIdentifier];
         
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelChooser)];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelChooser)];
     }
     return self;
 }
@@ -49,30 +53,59 @@ static NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooser
 {
     self.defaultLocale = [NSLocale currentLocale];
     self.selectedCountry = self.defaultCountry;
+    self.defaultSectionTitle = kESSCountryChooserDefaultDefaultSectionTitle;
+    
+    #warning TODO: wean off CountryPicker
     
     self.countries = [NSMutableDictionary dictionary];
     for (NSString *regionCode in [CountryPicker countryCodes]) {
         NSString *name = [[CountryPicker countryNamesByCode] objectForKey:regionCode];
         NSString *callingCode = [[NBPhoneNumberUtil sharedInstance] countryCodeFromRegionCode:regionCode];
-        ESSCountry *country = [ESSCountry countryWithRegionCode:regionCode name:name callingCode:callingCode];
         
-        NSString *key = [country.name substringToIndex:1];
-        NSMutableArray *array = self.countries[key] ? self.countries[key] : [NSMutableArray array];
-        [array addObject:country];
-        self.countries[key] = array;
+        if (callingCode) {
+            ESSCountry *country = [ESSCountry countryWithRegionCode:regionCode name:name callingCode:callingCode];
+            
+            NSString *key = [country.name substringToIndex:1];
+            NSMutableArray *array = self.countries[key] ? self.countries[key] : [NSMutableArray array];
+            [array addObject:country];
+            self.countries[key] = array;
+        }
     }
     
-    NSMutableArray *titles = [NSMutableArray arrayWithArray:[self.countries.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
-    [titles insertObject:UITableViewIndexSearch atIndex:0];
-    self.countrySectionTitles = titles;
+    NSMutableArray *sectionTitles = [NSMutableArray arrayWithArray:[self.countries.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+    self.countrySectionTitles = sectionTitles;
+    [self reloadCountrySectionTitles]; // insert the default section title
     
-    [self reloadCountries];
+    NSMutableArray *indexTitles = [NSMutableArray arrayWithArray:[self.countries.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+    [indexTitles insertObject:UITableViewIndexSearch atIndex:0];
+    self.countryIndexTitles = indexTitles;
+    
+    [self reloadCountries]; // insert the default section
 }
 
-/** Resets the first section of ::countries to reflect ::defaultLocale. */
+/**
+ * Resets the object for key ::defaultSectionTitle in ::countries, as well as
+ * the first section in ::countrySectionTitles, to reflect ::defaultCountry
+ * when it changes (i.e. when defaultLocale changes).
+ */
 - (void)reloadCountries
 {
-    self.countries[UITableViewIndexSearch] = @[self.defaultCountry];
+    if (self.defaultCountry) {
+        self.countries[self.defaultSectionTitle] = @[self.defaultCountry];
+    } else {
+        [self.countries removeObjectForKey:self.defaultSectionTitle];
+    }
+}
+
+- (void)reloadCountrySectionTitles
+{
+    if (self.defaultCountry) {
+        if (![self.countrySectionTitles containsObject:self.defaultSectionTitle]) {
+            [self.countrySectionTitles insertObject:self.defaultSectionTitle atIndex:0];
+        }
+    } else {
+        [self.countrySectionTitles removeObject:self.defaultSectionTitle];
+    }
 }
 
 - (void)viewDidLoad
@@ -95,6 +128,7 @@ static NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooser
 {
     _defaultLocale = defaultLocale;
     [self reloadCountries];
+    [self reloadCountrySectionTitles];
 }
 
 - (ESSCountry *)defaultCountry
@@ -121,13 +155,12 @@ static NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooser
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    #warning TODO: custom table view cell
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kESSCountryChooserReuseIdentifier forIndexPath:indexPath];
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kESSCountryChooserReuseIdentifier];
     
-    NSString *sectionTitle = self.countrySectionTitles[indexPath.section];
-    NSArray *sectionCountries = self.countries[sectionTitle];
-    ESSCountry *country = sectionCountries[indexPath.row];
+    ESSCountry *country = [self countryAtIndexPath:indexPath];
     cell.textLabel.text = [NSString stringWithFormat:@"+%@ %@", country.callingCode, country.name];
     
     return cell;
@@ -140,17 +173,41 @@ static NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooser
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    return self.countrySectionTitles;
+    return self.countryIndexTitles;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedCountry = [self countryAtIndexPath:indexPath];
+    [self.delegate countryChooser:self didSelectCountry:self.selectedCountry];
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSelector:@selector(dismissChooser) withObject:nil afterDelay:0.3f];
+//    [self dismissChooser];
 }
 
 #pragma mark - Actions
+
+- (void)dismissChooser
+{
+    [self.navigationController dismissViewControllerAnimated:self completion:nil];
+}
 
 - (void)cancelChooser
 {
     if ([self.delegate respondsToSelector:@selector(countryChooserDidCancel:)]) {
         [self.delegate countryChooserDidCancel:self];
     }
-    [self.navigationController dismissViewControllerAnimated:self completion:nil];
+    [self dismissChooser];
+}
+
+#pragma mark - Helpers
+
+- (ESSCountry *)countryAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *sectionTitle = self.countrySectionTitles[indexPath.section];
+    NSArray *sectionCountries = self.countries[sectionTitle];
+    return sectionCountries[indexPath.row];
 }
 
 @end
