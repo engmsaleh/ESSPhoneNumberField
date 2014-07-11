@@ -1,3 +1,11 @@
+# OS X
+*.DS_Store
+
+# Xcode
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However
