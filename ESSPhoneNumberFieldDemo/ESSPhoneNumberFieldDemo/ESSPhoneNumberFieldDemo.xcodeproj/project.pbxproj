@@ -1,0 +1,320 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BBDB1F051970056800A0DE4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDB1F041970056800A0DE4C /* Foundation.framework */; };
+		BBDB1F071970056800A0DE4C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDB1F061970056800A0DE4C /* CoreGraphics.framework */; };
+		BBDB1F091970056800A0DE4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDB1F081970056800A0DE4C /* UIKit.framework */; };
+		BBDB1F0F1970056800A0DE4C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBDB1F0D1970056800A0DE4C /* InfoPlist.strings */; };
+		BBDB1F111970056800A0DE4C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB1F101970056800A0DE4C /* main.m */; };
+		BBDB1F151970056800A0DE4C /* ESSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB1F141970056800A0DE4C /* ESSAppDelegate.m */; };
+		BBDB1F171970056800A0DE4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBDB1F161970056800A0DE4C /* Images.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BBDB1F011970056800A0DE4C /* ESSPhoneNumberFieldDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ESSPhoneNumberFieldDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBDB1F041970056800A0DE4C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BBDB1F061970056800A0DE4C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BBDB1F081970056800A0DE4C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BBDB1F0C1970056800A0DE4C /* ESSPhoneNumberFieldDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ESSPhoneNumberFieldDemo-Info.plist"; sourceTree = "<group>"; };
+		BBDB1F0E1970056800A0DE4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BBDB1F101970056800A0DE4C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BBDB1F121970056800A0DE4C /* ESSPhoneNumberFieldDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ESSPhoneNumberFieldDemo-Prefix.pch"; sourceTree = "<group>"; };
+		BBDB1F131970056800A0DE4C /* ESSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ESSAppDelegate.h; sourceTree = "<group>"; };
+		BBDB1F141970056800A0DE4C /* ESSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ESSAppDelegate.m; sourceTree = "<group>"; };
+		BBDB1F161970056800A0DE4C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BBDB1F1D1970056800A0DE4C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BBDB1EFE1970056800A0DE4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBDB1F071970056800A0DE4C /* CoreGraphics.framework in Frameworks */,
+				BBDB1F091970056800A0DE4C /* UIKit.framework in Frameworks */,
+				BBDB1F051970056800A0DE4C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BBDB1EF81970056800A0DE4C = {
+			isa = PBXGroup;
+			children = (
+				BBDB1F0A1970056800A0DE4C /* ESSPhoneNumberFieldDemo */,
+				BBDB1F34197005A800A0DE4C /* ESSPhoneNumberField */,
+				BBDB1F331970059700A0DE4C /* Vendor */,
+				BBDB1F031970056800A0DE4C /* Frameworks */,
+				BBDB1F021970056800A0DE4C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BBDB1F021970056800A0DE4C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BBDB1F011970056800A0DE4C /* ESSPhoneNumberFieldDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBDB1F031970056800A0DE4C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBDB1F041970056800A0DE4C /* Foundation.framework */,
+				BBDB1F061970056800A0DE4C /* CoreGraphics.framework */,
+				BBDB1F081970056800A0DE4C /* UIKit.framework */,
+				BBDB1F1D1970056800A0DE4C /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BBDB1F0A1970056800A0DE4C /* ESSPhoneNumberFieldDemo */ = {
+			isa = PBXGroup;
+			children = (
+				BBDB1F131970056800A0DE4C /* ESSAppDelegate.h */,
+				BBDB1F141970056800A0DE4C /* ESSAppDelegate.m */,
+				BBDB1F161970056800A0DE4C /* Images.xcassets */,
+				BBDB1F0B1970056800A0DE4C /* Supporting Files */,
+			);
+			path = ESSPhoneNumberFieldDemo;
+			sourceTree = "<group>";
+		};
+		BBDB1F0B1970056800A0DE4C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BBDB1F0C1970056800A0DE4C /* ESSPhoneNumberFieldDemo-Info.plist */,
+				BBDB1F0D1970056800A0DE4C /* InfoPlist.strings */,
+				BBDB1F101970056800A0DE4C /* main.m */,
+				BBDB1F121970056800A0DE4C /* ESSPhoneNumberFieldDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BBDB1F331970059700A0DE4C /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Vendor;
+			path = ../../ESSPhoneNumberField/Vendor;
+			sourceTree = SOURCE_ROOT;
+		};
+		BBDB1F34197005A800A0DE4C /* ESSPhoneNumberField */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ESSPhoneNumberField;
+			path = ../../ESSPhoneNumberField;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BBDB1F001970056800A0DE4C /* ESSPhoneNumberFieldDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBDB1F2D1970056800A0DE4C /* Build configuration list for PBXNativeTarget "ESSPhoneNumberFieldDemo" */;
+			buildPhases = (
+				BBDB1EFD1970056800A0DE4C /* Sources */,
+				BBDB1EFE1970056800A0DE4C /* Frameworks */,
+				BBDB1EFF1970056800A0DE4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ESSPhoneNumberFieldDemo;
+			productName = ESSPhoneNumberFieldDemo;
+			productReference = BBDB1F011970056800A0DE4C /* ESSPhoneNumberFieldDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BBDB1EF91970056800A0DE4C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ESS;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Erik Strottmann";
+			};
+			buildConfigurationList = BBDB1EFC1970056800A0DE4C /* Build configuration list for PBXProject "ESSPhoneNumberFieldDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BBDB1EF81970056800A0DE4C;
+			productRefGroup = BBDB1F021970056800A0DE4C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BBDB1F001970056800A0DE4C /* ESSPhoneNumberFieldDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BBDB1EFF1970056800A0DE4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBDB1F0F1970056800A0DE4C /* InfoPlist.strings in Resources */,
+				BBDB1F171970056800A0DE4C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BBDB1EFD1970056800A0DE4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBDB1F151970056800A0DE4C /* ESSAppDelegate.m in Sources */,
+				BBDB1F111970056800A0DE4C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BBDB1F0D1970056800A0DE4C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BBDB1F0E1970056800A0DE4C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BBDB1F2B1970056800A0DE4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		BBDB1F2C1970056800A0DE4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BBDB1F2E1970056800A0DE4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ESSPhoneNumberFieldDemo/ESSPhoneNumberFieldDemo-Prefix.pch";
+				INFOPLIST_FILE = "ESSPhoneNumberFieldDemo/ESSPhoneNumberFieldDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BBDB1F2F1970056800A0DE4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ESSPhoneNumberFieldDemo/ESSPhoneNumberFieldDemo-Prefix.pch";
+				INFOPLIST_FILE = "ESSPhoneNumberFieldDemo/ESSPhoneNumberFieldDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BBDB1EFC1970056800A0DE4C /* Build configuration list for PBXProject "ESSPhoneNumberFieldDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBDB1F2B1970056800A0DE4C /* Debug */,
+				BBDB1F2C1970056800A0DE4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBDB1F2D1970056800A0DE4C /* Build configuration list for PBXNativeTarget "ESSPhoneNumberFieldDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBDB1F2E1970056800A0DE4C /* Debug */,
+				BBDB1F2F1970056800A0DE4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BBDB1EF91970056800A0DE4C /* Project object */;
+}
