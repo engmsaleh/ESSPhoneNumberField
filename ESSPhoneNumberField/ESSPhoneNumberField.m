@@ -31,7 +31,6 @@
 
 @end
 
-
 @implementation ESSPhoneNumberField
 
 #pragma mark - Initialization
@@ -68,13 +67,14 @@
 
 - (NSString *)phoneNumber
 {
+    #warning TODO: use libPhoneNumber to format phoneNumber
     return [NSString stringWithFormat:@"+%@%@", self.countryCode, self.localPhoneNumber];
 }
 
 - (void)setCountryCode:(NSString *)countryCode
 {
     _countryCode = countryCode;
-    self.countryCodeButton.titleLabel.text = _countryCode;
+    self.countryCodeButton.titleLabel.text = [NSString stringWithFormat:@"+%@", _countryCode];
 }
 
 - (void)setLocalPhoneNumber:(NSString *)localPhoneNumber

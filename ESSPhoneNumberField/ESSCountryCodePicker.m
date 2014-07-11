@@ -8,19 +8,108 @@
 
 #import "ESSCountryCodePicker.h"
 
-@interface ESSCountryCodePicker ()
+#import "CountryPicker.h"
+#import "NBPhoneNumberUtil.h"
+
+
+#pragma mark - ESSCountry
+
+@interface ESSCountry : NSObject
+
+/** ISO two-letter country code */
+@property (nonatomic) NSString *regionCode;
+@property (nonatomic) NSString *name;
+@property (nonatomic) NSString *callingCode;
+
++ (instancetype)countryWithRegionCode:(NSString *)regionCode
+                           name:(NSString *)name
+                    callingCode:(NSString *)callingCode;
 
 @end
 
+@implementation ESSCountry
+
++ (instancetype)countryWithRegionCode:(NSString *)regionCode
+                           name:(NSString *)name
+                    callingCode:(NSString *)callingCode
+{
+    ESSCountry *country = [[self alloc] init];
+    if (country) {
+        country.regionCode = regionCode;
+        country.name = name;
+        country.callingCode = callingCode;
+    }
+    return country;
+}
+
+@end
+
+#pragma mark - ESSCountryCodePicker
+
+@interface ESSCountryCodePicker ()
+
+/**
+ * Mutable dictionary of NSArrays where keys are section titles and values are
+ * NSArrays of ESSCountry objects corresponding to that section. Within a
+ * section, countries are sorted alphabetically.
+ */
+@property (nonatomic) NSMutableDictionary *countries;
+/** Equivalent to [countries allKeys]. */
+@property (nonatomic) NSArray *countrySectionTitles;
+
+@end
+
+
 @implementation ESSCountryCodePicker
+
+#pragma mark - Constants
+
+/** Reuse identifier for table view cells. */
+static NSString * const kESSCountryCodePickerReuseIdentifier = @"kESSCountryCodePickerReuseIdentifier";
+
+#pragma mark - Initialization
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        [self initializeData];
+//        [self.tableView registerNib:[UINib nibWithNibName:@"" bundle:nil] forCellReuseIdentifier:kESSCountryCodePickerReuseIdentifier];
     }
     return self;
+}
+
+- (void)initializeData
+{
+    self.defaultLocale = [NSLocale currentLocale];
+    
+    self.countries = [NSMutableDictionary dictionary];
+    for (NSString *regionCode in [CountryPicker countryCodes]) {
+        NSString *name = [[CountryPicker countryNamesByCode] objectForKey:regionCode];
+        NSString *callingCode = [[NBPhoneNumberUtil sharedInstance] countryCodeFromRegionCode:regionCode];
+        ESSCountry *country = [ESSCountry countryWithRegionCode:regionCode name:name callingCode:callingCode];
+        
+        NSString *key = [country.name substringToIndex:1];
+        NSMutableArray *array = self.countries[key] ? self.countries[key] : [NSMutableArray array];
+        [array addObject:country];
+        self.countries[key] = array;
+    }
+    
+    NSMutableArray *titles = [NSMutableArray arrayWithArray:[self.countries.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]];
+    [titles insertObject:UITableViewIndexSearch atIndex:0];
+    self.countrySectionTitles = titles;
+    
+    [self reloadDefaultCountry];
+}
+
+/** Resets the first section of ::countries to reflect ::defaultLocale. */
+- (void)reloadDefaultCountry
+{
+    NSString *regionCode = nil;
+    NSString *name = nil;
+    NSString *callingCode = nil;
+    ESSCountry *defaultCountry = [ESSCountry countryWithRegionCode:regionCode name:name callingCode:callingCode];
+    self.countries[UITableViewIndexSearch] = @[defaultCountry];
 }
 
 - (void)viewDidLoad
@@ -28,10 +117,7 @@
     [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.clearsSelectionOnViewWillAppear = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,80 +126,40 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Properties
+
+- (void)setDefaultLocale:(NSLocale *)defaultLocale
+{
+    _defaultLocale = defaultLocale;
+    [self reloadDefaultCountry];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    return self.countrySectionTitles.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    NSString *sectionTitle = self.countrySectionTitles[section];
+    NSArray *sectionCountries = self.countries[sectionTitle];
+    return sectionCountries.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kESSCountryCodePickerReuseIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kESSCountryCodePickerReuseIdentifier];
+    
+    NSString *sectionTitle = self.countrySectionTitles[indexPath.section];
+    NSArray *sectionCountries = self.countries[sectionTitle];
+    ESSCountry *country = sectionCountries[indexPath.row];
+    cell.textLabel.text = country.name;
     
     return cell;
 }
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

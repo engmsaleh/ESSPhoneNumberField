@@ -25,4 +25,13 @@
 
 @property (weak, nonatomic) id<ESSCountryCodePickerDelegate> delegate;
 
+/**
+ * The row containing the default locale, and its corresponding country code, is
+ * displayed at the top of the list, and is selected by default. By default,
+ * defaultLocale is set to the device's current locale. If nil, no row will be
+ * displayed at the top or selected by default.
+ */
+@property (nonatomic) NSLocale *defaultLocale;
+
+
 @end
