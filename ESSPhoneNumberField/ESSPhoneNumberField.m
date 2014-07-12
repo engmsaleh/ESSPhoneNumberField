@@ -135,7 +135,6 @@ NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
     self.countryCodeButton = [[UIButton alloc] init];
     [self addSubview:self.countryCodeButton];
     
-    #warning TODO: #5 format phone numbers as-you-type
     self.nationalPhoneNumberField = [[UITextField alloc] init];
     self.nationalPhoneNumberField.delegate = self;
     self.nationalPhoneNumberField.placeholder = kESSPhoneNumberFieldDefaultPlaceholder;
@@ -250,7 +249,6 @@ NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
         }
     }
     
-    NSLog(@"digBef:\"%@\" repDig:\"%@\" digAft:\"%@\"", digitsBeforeRange, replacementDigits, digitsAfterRange);
     self.nationalPhoneNumber = [NSString stringWithFormat:@"%@%@%@", digitsBeforeRange, replacementDigits, digitsAfterRange];
     
     // Put the cursor back where it belongs
