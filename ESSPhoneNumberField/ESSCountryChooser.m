@@ -116,12 +116,6 @@ NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooserReuseId
     self.clearsSelectionOnViewWillAppear = NO;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Properties
 
 - (void)setDefaultLocale:(NSLocale *)defaultLocale

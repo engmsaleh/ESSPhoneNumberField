@@ -40,7 +40,7 @@ static NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self setUpSubviews];
+        [self initialize];
     }
     return self;
 }
@@ -49,11 +49,54 @@ static NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        [self setUpSubviews];
+        [self initialize];
     }
     return self;
 }
 
+/** Universal initializer - called by ::initWithFrame and ::initWithCoder. */
+- (void)initialize
+{
+    [self setUpSubviews];
+    [self setUpControlEvents];
+}
+
+#pragma mark - Properties
+
+- (NSString *)phoneNumber
+{
+    if ([self.nationalPhoneNumber isEqualToString:@""]) {
+        return @"";
+    }
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    
+    NBPhoneNumber *phoneNumber = [[NBPhoneNumber alloc] init];
+    phoneNumber.countryCode = [formatter numberFromString:self.countryCode];
+    phoneNumber.nationalNumber = [formatter numberFromString:self.nationalPhoneNumber];
+    
+    return [[NBPhoneNumberUtil sharedInstance] format:phoneNumber numberFormat:NBEPhoneNumberFormatE164 error:nil];
+}
+
+- (void)setCountryCode:(NSString *)countryCode
+{
+    _countryCode = countryCode;
+    [self.countryCodeButton setTitle:([_countryCode isEqualToString:@""] ?
+                                      @"" :
+                                      [NSString stringWithFormat:@"+%@", _countryCode])
+                            forState:UIControlStateNormal];
+}
+
+- (void)setNationalPhoneNumber:(NSString *)nationalPhoneNumber
+{
+    _nationalPhoneNumber = nationalPhoneNumber;
+    self.nationalPhoneNumberField.text = _nationalPhoneNumber;
+}
+
+#pragma mark - Subviews
+
+/** Allocate and initialize subviews. */
 - (void)setUpSubviews
 {
     self.countryCodeButton = [[UIButton alloc] init];
@@ -68,6 +111,7 @@ static NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
     [self resetVisualAttributes];
 }
 
+/** Set up layout constraints for subviews. */
 - (void)setUpAutolayout
 {
     self.countryCodeButton.translatesAutoresizingMaskIntoConstraints = NO;
@@ -124,31 +168,38 @@ static NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
     #warning TODO: #2 margins on button and text field
 }
 
-#pragma mark - Properties
+#pragma mark - Control events
 
-- (NSString *)phoneNumber
+/**
+ * Register self for subviews' control events, to update properties as
+ * necessary.
+ */
+- (void)setUpControlEvents
 {
-    #warning TODO: #3 send phone number field edit events
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    formatter.numberStyle = NSNumberFormatterDecimalStyle;
-    
-    NBPhoneNumber *phoneNumber = [[NBPhoneNumber alloc] init];
-    phoneNumber.countryCode = [formatter numberFromString:self.countryCode];
-    phoneNumber.nationalNumber = [formatter numberFromString:self.nationalPhoneNumber];
-    
-    return [[NBPhoneNumberUtil sharedInstance] format:phoneNumber numberFormat:NBEPhoneNumberFormatE164 error:nil];
+    [self.nationalPhoneNumberField addTarget:self
+                                      action:@selector(textFieldDidChange:)
+                            forControlEvents:UIControlEventEditingChanged];
 }
 
-- (void)setCountryCode:(NSString *)countryCode
+/**
+ * Update ::nationalPhoneNumber when nationalPhoneNumberField changes, and send
+ * actions for UIControlEventEditingChanged.
+ */
+- (void)textFieldDidChange:(UITextField *)textField
 {
-    _countryCode = countryCode;
-    [self.countryCodeButton setTitle:[NSString stringWithFormat:@"+%@", _countryCode] forState:UIControlStateNormal];
+    if (textField == self.nationalPhoneNumberField) {
+        // Set _nationalPhoneNumber to only the decimal characters from
+        // nationalPhoneNumberField.text
+        _nationalPhoneNumber = [[self.nationalPhoneNumberField.text componentsSeparatedByCharactersInSet:
+                                 [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
+                                componentsJoinedByString:@""];
+    }
+    [self sendActionsForControlEvents:UIControlEventEditingChanged];
 }
 
-- (void)setNationalPhoneNumber:(NSString *)nationalPhoneNumber
+- (UIControlEvents)allControlEvents
 {
-    _nationalPhoneNumber = nationalPhoneNumber;
-    self.nationalPhoneNumberField.text = _nationalPhoneNumber;
+    return UIControlEventEditingChanged;
 }
 
 #pragma mark - ESSCountryChooserDelegate
@@ -156,6 +207,7 @@ static NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
 - (void)countryChooser:(ESSCountryChooser *)countryChooser didSelectCountry:(ESSCountry *)country;
 {
     self.countryCode = country.callingCode;
+    [self sendActionsForControlEvents:UIControlEventEditingChanged];
 }
 
 @end

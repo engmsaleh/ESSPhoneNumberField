@@ -34,18 +34,27 @@ static NSString * const kESSPhoneNumberFieldDemoDefaultLabelText = @"Enter a pho
     self.modalNavigationController = [[UINavigationController alloc] initWithRootViewController:self.countryCodePicker];
     
     self.phoneNumberField.countryCode = self.countryCodePicker.selectedCountry.callingCode;
-    [self.phoneNumberField.countryCodeButton addTarget:self action:@selector(showCountryCodePicker) forControlEvents:UIControlEventTouchUpInside];
+    [self.phoneNumberField.countryCodeButton addTarget:self
+                                                action:@selector(showCountryCodePicker)
+                                      forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.phoneNumberField addTarget:self
+                              action:@selector(updateLabel)
+                    forControlEvents:UIControlEventEditingChanged];
 }
+
+#pragma mark - Actions
      
 - (void)showCountryCodePicker
 {
     [self.navigationController presentViewController:self.modalNavigationController animated:YES completion:nil];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)updateLabel
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.label.text = ![self.phoneNumberField.phoneNumber isEqualToString:@""] ?
+                      [NSString stringWithFormat:@"Entered: %@", self.phoneNumberField.phoneNumber] :
+                      kESSPhoneNumberFieldDemoDefaultLabelText;
 }
 
 @end
