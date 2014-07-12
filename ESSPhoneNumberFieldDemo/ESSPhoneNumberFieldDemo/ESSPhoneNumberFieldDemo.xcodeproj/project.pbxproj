@@ -10,6 +10,8 @@
 		BB83AEDC197061A000BE674F /* ESSPhoneNumberFieldDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB83AEDA197061A000BE674F /* ESSPhoneNumberFieldDemoViewController.m */; };
 		BB83AEDD197061A000BE674F /* ESSPhoneNumberFieldDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB83AEDB197061A000BE674F /* ESSPhoneNumberFieldDemoViewController.xib */; };
 		BB83AEE0197070D200BE674F /* ESSCountry.m in Sources */ = {isa = PBXBuildFile; fileRef = BB83AEDF197070D200BE674F /* ESSCountry.m */; };
+		BBB93EF81971BCF500D49A8C /* ESSCountryChooserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB93EF61971BCF500D49A8C /* ESSCountryChooserCell.m */; };
+		BBB93EF91971BCF500D49A8C /* ESSCountryChooserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBB93EF71971BCF500D49A8C /* ESSCountryChooserCell.xib */; };
 		BBDB1F051970056800A0DE4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDB1F041970056800A0DE4C /* Foundation.framework */; };
 		BBDB1F071970056800A0DE4C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDB1F061970056800A0DE4C /* CoreGraphics.framework */; };
 		BBDB1F091970056800A0DE4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDB1F081970056800A0DE4C /* UIKit.framework */; };
@@ -38,6 +40,9 @@
 		BB83AEDB197061A000BE674F /* ESSPhoneNumberFieldDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ESSPhoneNumberFieldDemoViewController.xib; sourceTree = "<group>"; };
 		BB83AEDE197070D200BE674F /* ESSCountry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSCountry.h; sourceTree = "<group>"; };
 		BB83AEDF197070D200BE674F /* ESSCountry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSCountry.m; sourceTree = "<group>"; };
+		BBB93EF51971BCF500D49A8C /* ESSCountryChooserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSCountryChooserCell.h; sourceTree = "<group>"; };
+		BBB93EF61971BCF500D49A8C /* ESSCountryChooserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSCountryChooserCell.m; sourceTree = "<group>"; };
+		BBB93EF71971BCF500D49A8C /* ESSCountryChooserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ESSCountryChooserCell.xib; sourceTree = "<group>"; };
 		BBDB1F011970056800A0DE4C /* ESSPhoneNumberFieldDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ESSPhoneNumberFieldDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBDB1F041970056800A0DE4C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BBDB1F061970056800A0DE4C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -164,6 +169,9 @@
 				BBDB218319700C7100A0DE4C /* ESSPhoneNumberField.m */,
 				BBDB21851970107700A0DE4C /* ESSCountryChooser.h */,
 				BBDB21861970107700A0DE4C /* ESSCountryChooser.m */,
+				BBB93EF51971BCF500D49A8C /* ESSCountryChooserCell.h */,
+				BBB93EF61971BCF500D49A8C /* ESSCountryChooserCell.m */,
+				BBB93EF71971BCF500D49A8C /* ESSCountryChooserCell.xib */,
 				BB83AEDE197070D200BE674F /* ESSCountry.h */,
 				BB83AEDF197070D200BE674F /* ESSCountry.m */,
 			);
@@ -268,6 +276,7 @@
 				BB83AEDD197061A000BE674F /* ESSPhoneNumberFieldDemoViewController.xib in Resources */,
 				BBDB1F0F1970056800A0DE4C /* InfoPlist.strings in Resources */,
 				BBDB1F171970056800A0DE4C /* Images.xcassets in Resources */,
+				BBB93EF91971BCF500D49A8C /* ESSCountryChooserCell.xib in Resources */,
 				BBDB22011970312400A0DE4C /* NBPhoneNumberMetadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,6 +290,7 @@
 			files = (
 				BB83AEE0197070D200BE674F /* ESSCountry.m in Sources */,
 				BBDB1F151970056800A0DE4C /* ESSAppDelegate.m in Sources */,
+				BBB93EF81971BCF500D49A8C /* ESSCountryChooserCell.m in Sources */,
 				BBDB218419700C7100A0DE4C /* ESSPhoneNumberField.m in Sources */,
 				BBDB21871970107700A0DE4C /* ESSCountryChooser.m in Sources */,
 				BBDB21F81970309100A0DE4C /* NBNumberFormat.m in Sources */,

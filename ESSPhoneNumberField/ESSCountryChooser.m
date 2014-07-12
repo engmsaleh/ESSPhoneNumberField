@@ -7,6 +7,7 @@
 //
 
 #import "ESSCountryChooser.h"
+#import "ESSCountryChooserCell.h"
 
 #import "CountryPicker.h"
 #import "NBPhoneNumberUtil.h"
@@ -23,6 +24,8 @@
 @property (nonatomic) NSMutableArray *countrySectionTitles;
 /** The titles for the section index (quick jump) on the right of the screen. */
 @property (nonatomic) NSMutableArray *countryIndexTitles;
+/** The cells corresponding to ::selectedCountry. */
+@property (nonatomic) NSMutableSet *selectedCells;
 
 @end
 
@@ -32,6 +35,8 @@
 
 /** Default value for ::defaultSectionTitle. */
 NSString * const kESSCountryChooserDefaultDefaultSectionTitle = @"Current Region";
+/** Default value for ::dismissDelay. */
+NSTimeInterval const kESSCountryChooserDefaultDismissDelay = 0.5f;
 /** Reuse identifier for table view cells. */
 NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooserReuseIdentifier";
 
@@ -42,7 +47,7 @@ NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooserReuseId
     self = [super initWithStyle:style];
     if (self) {
         [self initializeData];
-//        [self.tableView registerNib:[UINib nibWithNibName:@"" bundle:nil] forCellReuseIdentifier:kESSCountryChooserReuseIdentifier];
+        [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([ESSCountryChooserCell class]) bundle:nil] forCellReuseIdentifier:kESSCountryChooserReuseIdentifier];
         
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelChooser)];
     }
@@ -53,6 +58,7 @@ NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooserReuseId
 {
     self.defaultLocale = [NSLocale currentLocale];
     self.selectedCountry = self.defaultCountry;
+    self.selectedCells = [NSMutableSet set];
     self.defaultSectionTitle = kESSCountryChooserDefaultDefaultSectionTitle;
     
     #warning TODO: #4 wean off CountryPicker
@@ -116,21 +122,31 @@ NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooserReuseId
     self.clearsSelectionOnViewWillAppear = NO;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData]; // to ensure proper checkmarks on selected rows
+}
+
 #pragma mark - Properties
 
 - (void)setDefaultLocale:(NSLocale *)defaultLocale
 {
     _defaultLocale = defaultLocale;
+    
+    BOOL defaultSelected = [self.selectedCountry isEqual:self.defaultCountry];
+    
+    NSString *regionCode = [defaultLocale objectForKey:NSLocaleCountryCode];
+    NSString *name = [defaultLocale displayNameForKey:NSLocaleCountryCode value:regionCode];
+    NSString *callingCode = [[NBPhoneNumberUtil sharedInstance] countryCodeFromRegionCode:regionCode];
+    _defaultCountry = [ESSCountry countryWithRegionCode:regionCode name:name callingCode:callingCode];
+    
+    if (defaultSelected) {
+        self.selectedCountry = self.defaultCountry;
+    }
+    
     [self reloadCountries];
     [self reloadCountrySectionTitles];
-}
-
-- (ESSCountry *)defaultCountry
-{
-    NSString *regionCode = [self.defaultLocale objectForKey:NSLocaleCountryCode];
-    NSString *name = [[CountryPicker countryNamesByCode] objectForKey:regionCode];
-    NSString *callingCode = [[NBPhoneNumberUtil sharedInstance] countryCodeFromRegionCode:regionCode];
-    return [ESSCountry countryWithRegionCode:regionCode name:name callingCode:callingCode];
 }
 
 #pragma mark - Table view data source
@@ -149,13 +165,18 @@ NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooserReuseId
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    #warning TODO: #2 custom table view cell
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kESSCountryChooserReuseIdentifier forIndexPath:indexPath];
-    
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kESSCountryChooserReuseIdentifier];
+    ESSCountryChooserCell *cell = [tableView dequeueReusableCellWithIdentifier:kESSCountryChooserReuseIdentifier forIndexPath:indexPath];
     
     ESSCountry *country = [self countryAtIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"+%@ %@", country.callingCode, country.name];
+    [cell configureForCountry:country];
+    
+    if ([country isEqual:self.selectedCountry]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        [self.selectedCells addObject:cell];
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        [self.selectedCells removeObject:cell];
+    }
     
     return cell;
 }
@@ -173,11 +194,19 @@ NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooserReuseId
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedCountry = [self countryAtIndexPath:indexPath];
-    [self.delegate countryChooser:self didSelectCountry:self.selectedCountry];
     
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self performSelector:@selector(dismissChooser) withObject:nil afterDelay:0.3f];
-//    [self dismissChooser];
+    for (UITableViewCell *cell in self.selectedCells) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    [self.selectedCells removeAllObjects];
+    
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    if ([self.selectedCountry isEqual:self.defaultCountry]) {
+        [self.tableView reloadSections:[[NSIndexSet alloc] initWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    
+    [self.delegate countryChooser:self didSelectCountry:self.selectedCountry];
+    [self performSelector:@selector(dismissChooser) withObject:nil afterDelay:kESSCountryChooserDefaultDismissDelay];
 }
 
 #pragma mark - Actions

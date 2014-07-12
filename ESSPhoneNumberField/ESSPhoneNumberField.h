@@ -39,7 +39,4 @@ extern NSString * const kESSPhoneNumberFieldDefaultPlaceholder;
  */
 @property (readonly, nonatomic) NSString *nationalPhoneNumberFormatted;
 
-/** Resets the phone number field's appearance to the default values. */
-- (void)resetVisualAttributes;
-
 @end

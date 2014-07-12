@@ -23,4 +23,15 @@
     return country;
 }
 
+- (BOOL)isEqual:(id)object
+{
+    if (!object || ![object isMemberOfClass:self.class]) {
+        return NO;
+    }
+    ESSCountry *otherCountry = (ESSCountry *)object;
+    return [self.regionCode isEqualToString:otherCountry.regionCode] &&
+           [self.name isEqualToString:otherCountry.name] &&
+           [self.callingCode isEqualToString:otherCountry.callingCode];
+}
+
 @end

@@ -19,21 +19,22 @@
  * ::countryCode. Recommended use: present a modal country chooser on touch up
  * inside this button, and set the phone number field as its delegate.
  */
-@property (nonatomic) UIButton *countryCodeButton;
+@property (readwrite, nonatomic) UIButton *countryCodeButton;
 /**
  * A text field where the user enters the national portion of the phone number,
  * ::nationalPhoneNumber.
  */
-@property (nonatomic) UITextField *nationalPhoneNumberField;
+@property (readwrite, nonatomic) UITextField *nationalPhoneNumberField;
 
 @end
 
 @implementation ESSPhoneNumberField
-
+#warning TODO: #8 optionally validate number as you type
 #pragma mark - Constants
 
 NSString * const kESSPhoneNumberFieldDefaultPlaceholder = @"Phone number";
-NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
+NSString * const kESSPhoneNumberFieldMaxWidthString = @" +888 ";
+CGFloat const kESSPhoneNumberFieldLeftPadding = 8.0f;
 
 #pragma mark - Initialization
 
@@ -86,19 +87,6 @@ NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
     return phoneNumber;
 }
 
-/** Helper to return formatted versions of the phone number. */
-- (NSString *)phoneNumberWithFormat:(NBEPhoneNumberFormat)format
-{
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    formatter.numberStyle = NSNumberFormatterDecimalStyle;
-    
-    NBPhoneNumber *phoneNumber = [[NBPhoneNumber alloc] init];
-    phoneNumber.countryCode = [formatter numberFromString:self.countryCode];
-    phoneNumber.nationalNumber = [formatter numberFromString:self.nationalPhoneNumber];
-    
-    return [[NBPhoneNumberUtil sharedInstance] format:phoneNumber numberFormat:format error:nil];
-}
-
 - (void)setCountryCode:(NSString *)countryCode
 {
     _countryCode = countryCode;
@@ -117,6 +105,19 @@ NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
     } else {
         self.nationalPhoneNumberField.text = [self nationalPhoneNumberFormatted];
     }
+}
+
+/** Helper to return formatted versions of the phone number. */
+- (NSString *)phoneNumberWithFormat:(NBEPhoneNumberFormat)format
+{
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    formatter.numberStyle = NSNumberFormatterDecimalStyle;
+    
+    NBPhoneNumber *phoneNumber = [[NBPhoneNumber alloc] init];
+    phoneNumber.countryCode = [formatter numberFromString:self.countryCode];
+    phoneNumber.nationalNumber = [formatter numberFromString:self.nationalPhoneNumber];
+    
+    return [[NBPhoneNumberUtil sharedInstance] format:phoneNumber numberFormat:format error:nil];
 }
 
 /** Returns only the decimal digit characters from the string argument. */
@@ -142,7 +143,7 @@ NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
     [self addSubview:self.nationalPhoneNumberField];
     
     [self setUpAutolayout];
-    [self resetVisualAttributes];
+    [self styleSubviews];
 }
 
 /** Sets up layout constraints for subviews. */
@@ -193,13 +194,18 @@ NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
     [self addConstraint:constraint];
 }
 
-- (void)resetVisualAttributes
+- (void)styleSubviews
 {
     self.countryCodeButton.backgroundColor = [UIColor grayColor];
     self.countryCodeButton.titleLabel.textColor = [UIColor whiteColor];
-    self.nationalPhoneNumberField.backgroundColor = [UIColor lightGrayColor];
     
-    #warning TODO: #2 margins on button and text field
+    self.nationalPhoneNumberField.backgroundColor = [UIColor lightGrayColor];
+    self.nationalPhoneNumberField.textColor = [UIColor whiteColor];
+    self.nationalPhoneNumberField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:self.nationalPhoneNumberField.placeholder attributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kESSPhoneNumberFieldLeftPadding, 0)];
+    self.nationalPhoneNumberField.leftView = paddingView;
+    self.nationalPhoneNumberField.leftViewMode = UITextFieldViewModeAlways;
 }
 
 #pragma mark - Control events
@@ -226,7 +232,6 @@ NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
     }
     
     #warning TODO: #7 limit insertion to 15 characters, including country code
-    #warning TODO: optionally validate number as you type
     
     // Replace the characters
     NSString *substringBeforeRange = [textField.text substringToIndex:range.location];

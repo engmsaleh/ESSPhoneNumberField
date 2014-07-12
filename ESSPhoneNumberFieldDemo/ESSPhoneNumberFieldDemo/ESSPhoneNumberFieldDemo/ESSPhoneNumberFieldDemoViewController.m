@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet ESSPhoneNumberField *phoneNumberField;
 @property (nonatomic) UINavigationController *modalNavigationController;
-@property (nonatomic) ESSCountryChooser *countryCodePicker;
+@property (nonatomic) ESSCountryChooser *countryChooser;
 
 @end
 
@@ -28,15 +28,17 @@ static NSString * const kESSPhoneNumberFieldDemoDefaultLabelText = @"Enter a pho
     
     self.label.text = kESSPhoneNumberFieldDemoDefaultLabelText;
     
-    self.countryCodePicker = [[ESSCountryChooser alloc] initWithStyle:UITableViewStylePlain];
-    self.countryCodePicker.delegate = self.phoneNumberField;
+    self.countryChooser = [[ESSCountryChooser alloc] initWithStyle:UITableViewStylePlain];
+    self.countryChooser.delegate = self.phoneNumberField;
+    self.countryChooser.defaultLocale = [NSLocale localeWithLocaleIdentifier:@"es_AR"];
     
-    self.modalNavigationController = [[UINavigationController alloc] initWithRootViewController:self.countryCodePicker];
+    self.modalNavigationController = [[UINavigationController alloc] initWithRootViewController:self.countryChooser];
     
-    self.phoneNumberField.countryCode = self.countryCodePicker.selectedCountry.callingCode;
+    self.phoneNumberField.countryCode = self.countryChooser.selectedCountry.callingCode;
     [self.phoneNumberField.countryCodeButton addTarget:self
                                                 action:@selector(showCountryCodePicker)
                                       forControlEvents:UIControlEventTouchUpInside];
+    [self.phoneNumberField countryChooser:self.countryChooser didSelectCountry:self.countryChooser.defaultCountry];
     
     [self.phoneNumberField addTarget:self
                               action:@selector(updateLabel)
@@ -52,7 +54,7 @@ static NSString * const kESSPhoneNumberFieldDemoDefaultLabelText = @"Enter a pho
 
 - (void)updateLabel
 {
-    self.label.text = self.phoneNumberField.phoneNumberE164 && ![self.phoneNumberField.phoneNumberE164 isEqualToString:@""] ?
+    self.label.text = self.phoneNumberField.phoneNumberE164 && self.phoneNumberField.nationalPhoneNumber ?
                       [NSString stringWithFormat:@"Entered (E.164): %@", self.phoneNumberField.phoneNumberE164] :
                       kESSPhoneNumberFieldDemoDefaultLabelText;
 }

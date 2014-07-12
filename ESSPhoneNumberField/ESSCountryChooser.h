@@ -29,6 +29,8 @@
 
 /** Default value for ::defaultSectionTitle. */
 extern NSString * const kESSCountryChooserDefaultDefaultSectionTitle;
+/** Default value for ::dismissDelay. */
+extern NSTimeInterval const kESSCountryChooserDefaultDismissDelay;
 
 @property (weak, nonatomic) id<ESSCountryChooserDelegate> delegate;
 
@@ -42,8 +44,16 @@ extern NSString * const kESSCountryChooserDefaultDefaultSectionTitle;
 /** To set, use ::defaultLocale. */
 @property (readonly, nonatomic) ESSCountry *defaultCountry;
 @property (nonatomic) ESSCountry *selectedCountry;
-/** The title for the "default" section, if present. */
+/**
+ * The title for the "default" section, if present.
+ * ::kESSCountryChooserDefaultDefaultSectionTitle by default.
+ */
 @property (nonatomic) NSString *defaultSectionTitle;
+/**
+ * The time interval between row selection and chooser dismissal.
+ * ::kESSCountryChooserDefaultDismissDelay by default.
+ */
+@property (nonatomic) NSTimeInterval dismissDelay;
 
 /** Cancels the chooser without changing ::selectedCountry. */
 - (void)cancelChooser;
