@@ -59,7 +59,6 @@ NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
 - (void)initialize
 {
     [self setUpSubviews];
-    [self setUpControlEvents];
 }
 
 #pragma mark - Properties
@@ -77,9 +76,9 @@ NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
 {
     NSString *phoneNumber = [self phoneNumberWithFormat:NBEPhoneNumberFormatINTERNATIONAL];
     
-    NSUInteger countryCodeEndIndex = self.countryCode.length + 1; // extra char for +
+    NSUInteger countryCodeEndIndex = self.countryCode.length + 2; // extra chars for + and space
     if (phoneNumber.length >= countryCodeEndIndex &&
-        [[phoneNumber substringToIndex:countryCodeEndIndex] isEqualToString:[NSString stringWithFormat:@"+%@", self.countryCode]]) {
+        [[phoneNumber substringToIndex:countryCodeEndIndex] isEqualToString:[NSString stringWithFormat:@"+%@ ", self.countryCode]]) {
         
         phoneNumber = [phoneNumber substringFromIndex:countryCodeEndIndex];
     }
@@ -113,19 +112,11 @@ NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
 {
     _nationalPhoneNumber = nationalPhoneNumber;
     
-    if (![nationalPhoneNumber isEqualToString:@""]) {
+    if ([nationalPhoneNumber isEqualToString:@""]) {
+        self.nationalPhoneNumberField.text = @"";
+    } else {
         self.nationalPhoneNumberField.text = [self nationalPhoneNumberFormatted];
     }
-}
-
-/**
- * Sets ::nationalPhoneNumber to only the decimal characters from
- * ::nationalPhoneNumberField.text. Also updates formatting for
- * ::nationalPhoneNumberField.text.
- */
-- (void)setNationalPhoneNumberFromField
-{
-    self.nationalPhoneNumber = [self numberCharactersFromString:self.nationalPhoneNumberField.text];
 }
 
 /** Returns only the decimal digit characters from the string argument. */
@@ -214,29 +205,6 @@ NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
 
 #pragma mark - Control events
 
-/**
- * Registers self for subviews' control events, to update properties as
- * necessary.
- */
-- (void)setUpControlEvents
-{
-    [self.nationalPhoneNumberField addTarget:self
-                                      action:@selector(textFieldDidChange:)
-                            forControlEvents:UIControlEventEditingChanged];
-}
-
-/**
- * Updates ::nationalPhoneNumber when nationalPhoneNumberField changes, and
- * sends actions for UIControlEventEditingChanged.
- */
-- (void)textFieldDidChange:(UITextField *)textField
-{
-    if (textField == self.nationalPhoneNumberField) {
-        [self setNationalPhoneNumberFromField];
-    }
-    [self sendActionsForControlEvents:UIControlEventEditingChanged];
-}
-
 - (UIControlEvents)allControlEvents
 {
     return UIControlEventEditingChanged;
@@ -252,25 +220,46 @@ NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)replacementString
 {
     if (textField != self.nationalPhoneNumberField) {
         return YES;
     }
     
+    #warning TODO: #7 limit insertion to 15 characters, including country code
+    #warning TODO: optionally validate number as you type
+    
     // Replace the characters
-    NSString *replacementString = [self numberCharactersFromString:string];
+    NSString *substringBeforeRange = [textField.text substringToIndex:range.location];
+    NSString *digitsBeforeRange = [self numberCharactersFromString:substringBeforeRange];
     
-    NSString *substringBeforeRange = [self numberCharactersFromString:[textField.text substringToIndex:range.location]];
-    NSString *substringAfterRange = [self numberCharactersFromString:[textField.text substringFromIndex:(range.location + range.length)]];
+    NSString *substringInRange = [textField.text substringWithRange:range];
+    NSString *digitsInRange = [self numberCharactersFromString:substringInRange];
     
-    self.nationalPhoneNumber = [NSString stringWithFormat:@"%@%@%@", substringBeforeRange, replacementString, substringAfterRange];
+    NSString *substringAfterRange = [textField.text substringFromIndex:(range.location + range.length)];
+    NSString *digitsAfterRange = [self numberCharactersFromString:substringAfterRange];
+    
+    NSString *replacementDigits = [self numberCharactersFromString:replacementString];
+    
+    if (digitsInRange.length == 0 && substringInRange.length > 0 &&
+        replacementDigits.length == 0 && replacementString.length == 0) {
+        // Trying to delete only formatting characters
+        // Instead, delete exactly one digit
+        if (digitsBeforeRange.length > 0) {
+            digitsBeforeRange = [digitsBeforeRange substringToIndex:digitsBeforeRange.length - 1];
+        }
+    }
+    
+    NSLog(@"digBef:\"%@\" repDig:\"%@\" digAft:\"%@\"", digitsBeforeRange, replacementDigits, digitsAfterRange);
+    self.nationalPhoneNumber = [NSString stringWithFormat:@"%@%@%@", digitsBeforeRange, replacementDigits, digitsAfterRange];
     
     // Put the cursor back where it belongs
-    NSUInteger cursorIndex = [self string:self.nationalPhoneNumberField.text indexAfterNthDigit:substringBeforeRange.length] + replacementString.length;
+    NSUInteger cursorIndex = [self string:self.nationalPhoneNumberField.text indexAfterNthDigit:digitsBeforeRange.length] + replacementDigits.length;
     UITextPosition *cursorPosition = [textField positionFromPosition:textField.beginningOfDocument offset:cursorIndex];
     UITextRange *cursorRange = [textField textRangeFromPosition:cursorPosition toPosition:cursorPosition];
     textField.selectedTextRange = cursorRange;
+    
+    [self sendActionsForControlEvents:UIControlEventEditingChanged];
     
     return NO;
 }
