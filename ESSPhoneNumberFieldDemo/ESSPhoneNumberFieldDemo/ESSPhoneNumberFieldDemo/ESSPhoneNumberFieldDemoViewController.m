@@ -52,8 +52,8 @@ static NSString * const kESSPhoneNumberFieldDemoDefaultLabelText = @"Enter a pho
 
 - (void)updateLabel
 {
-    self.label.text = ![self.phoneNumberField.phoneNumber isEqualToString:@""] ?
-                      [NSString stringWithFormat:@"Entered: %@", self.phoneNumberField.phoneNumber] :
+    self.label.text = self.phoneNumberField.phoneNumberE164 && ![self.phoneNumberField.phoneNumberE164 isEqualToString:@""] ?
+                      [NSString stringWithFormat:@"Entered: %@", self.phoneNumberField.nationalPhoneNumberFormatted] :
                       kESSPhoneNumberFieldDemoDefaultLabelText;
 }
 

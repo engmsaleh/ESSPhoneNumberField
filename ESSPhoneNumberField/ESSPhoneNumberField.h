@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "ESSCountryChooser.h"
 
-@interface ESSPhoneNumberField : UIControl <ESSCountryChooserDelegate>
+@interface ESSPhoneNumberField : UIControl <ESSCountryChooserDelegate, UITextFieldDelegate>
+
+/** Default placeholder text for ::nationalPhoneNumberField. */
+extern NSString * const kESSPhoneNumberFieldDefaultPlaceholder;
 
 /**
  * A button designed to present a modal ESSCountryCodePicker when tapped.
@@ -25,13 +28,18 @@
 @property (readonly, nonatomic) UITextField *nationalPhoneNumberField;
 
 /** The phone number, in E.164 format, displayed in the phone number field. */
-@property (readonly, nonatomic) NSString *phoneNumber;
-/** The country calling code displayed in the phone number field. */
+@property (readonly, nonatomic) NSString *phoneNumberE164;
+/** The country calling code displayed in the phone number field, without +. */
 @property (nonatomic) NSString *countryCode;
 /** The national portion of the phone number displayed in the phone number field. */
 @property (nonatomic) NSString *nationalPhoneNumber;
+/**
+ * The phone number displayed in the phone number field, formatted in the
+ * international style but without the country code,.
+ */
+@property (readonly, nonatomic) NSString *nationalPhoneNumberFormatted;
 
-/** Reset the phone number field's appearance to the default values. */
+/** Resets the phone number field's appearance to the default values. */
 - (void)resetVisualAttributes;
 
 @end
