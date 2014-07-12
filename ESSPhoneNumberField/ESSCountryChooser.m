@@ -27,7 +27,7 @@
 @end
 
 @implementation ESSCountryChooser
-
+#warning TODO: #1 implement search
 #pragma mark - Constants
 
 /** Default value for ::defaultSectionTitle. */
@@ -55,7 +55,7 @@ NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooserReuseId
     self.selectedCountry = self.defaultCountry;
     self.defaultSectionTitle = kESSCountryChooserDefaultDefaultSectionTitle;
     
-    #warning TODO: wean off CountryPicker
+    #warning TODO: #4 wean off CountryPicker
     
     self.countries = [NSMutableDictionary dictionary];
     for (NSString *regionCode in [CountryPicker countryCodes]) {
@@ -155,7 +155,7 @@ NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooserReuseId
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    #warning TODO: custom table view cell
+    #warning TODO: #2 custom table view cell
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kESSCountryChooserReuseIdentifier forIndexPath:indexPath];
     
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kESSCountryChooserReuseIdentifier];

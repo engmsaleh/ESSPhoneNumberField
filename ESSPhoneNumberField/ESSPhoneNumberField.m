@@ -59,7 +59,7 @@ static NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
     self.countryCodeButton = [[UIButton alloc] init];
     [self addSubview:self.countryCodeButton];
     
-    #warning TODO: format phone numbers as-you-type
+    #warning TODO: #5 format phone numbers as-you-type
     self.nationalPhoneNumberField = [[UITextField alloc] init];
     self.nationalPhoneNumberField.keyboardType = UIKeyboardTypeNumberPad;
     [self addSubview:self.nationalPhoneNumberField];
@@ -121,15 +121,14 @@ static NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
     self.countryCodeButton.titleLabel.textColor = [UIColor whiteColor];
     self.nationalPhoneNumberField.backgroundColor = [UIColor lightGrayColor];
     
-    #warning TODO: phone number field border
-    #warning TODO: margins on button and text field
+    #warning TODO: #2 margins on button and text field
 }
 
 #pragma mark - Properties
 
 - (NSString *)phoneNumber
 {
-    #warning TODO: send phone number field edit events
+    #warning TODO: #3 send phone number field edit events
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.numberStyle = NSNumberFormatterDecimalStyle;
     
