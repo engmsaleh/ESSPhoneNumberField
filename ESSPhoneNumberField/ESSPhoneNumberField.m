@@ -190,9 +190,9 @@ static NSString * const kESSPhoneNumberFieldMaxWidthString = @"+888";
     if (textField == self.nationalPhoneNumberField) {
         // Set _nationalPhoneNumber to only the decimal characters from
         // nationalPhoneNumberField.text
-        _nationalPhoneNumber = [[self.nationalPhoneNumberField.text componentsSeparatedByCharactersInSet:
-                                 [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
-                                componentsJoinedByString:@""];
+        self.nationalPhoneNumber = [[self.nationalPhoneNumberField.text componentsSeparatedByCharactersInSet:
+                                     [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
+                                    componentsJoinedByString:@""];
     }
     [self sendActionsForControlEvents:UIControlEventEditingChanged];
 }
