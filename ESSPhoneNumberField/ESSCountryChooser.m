@@ -9,7 +9,6 @@
 #import "ESSCountryChooser.h"
 #import "ESSCountryChooserCell.h"
 
-#import "CountryPicker.h"
 #import "NBPhoneNumberUtil.h"
 
 @interface ESSCountryChooser ()
@@ -61,14 +60,13 @@ NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooserReuseId
     self.selectedCells = [NSMutableSet set];
     self.defaultSectionTitle = kESSCountryChooserDefaultDefaultSectionTitle;
     
-    #warning TODO: #4 wean off CountryPicker
-    
     self.countries = [NSMutableDictionary dictionary];
-    for (NSString *regionCode in [CountryPicker countryCodes]) {
-        NSString *name = [[CountryPicker countryNamesByCode] objectForKey:regionCode];
+    for (NSString *regionCode in [NSLocale ISOCountryCodes]) {
+        NSString *identifier = [NSLocale localeIdentifierFromComponents:@{NSLocaleCountryCode:regionCode}];
+        NSString *name = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifier value:identifier];
         NSString *callingCode = [[NBPhoneNumberUtil sharedInstance] countryCodeFromRegionCode:regionCode];
         
-        if (callingCode) {
+        if (name && callingCode) {
             ESSCountry *country = [ESSCountry countryWithRegionCode:regionCode name:name callingCode:callingCode];
             
             NSString *key = [country.name substringToIndex:1];

@@ -21,7 +21,6 @@
 		BBDB1F171970056800A0DE4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBDB1F161970056800A0DE4C /* Images.xcassets */; };
 		BBDB218419700C7100A0DE4C /* ESSPhoneNumberField.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB218319700C7100A0DE4C /* ESSPhoneNumberField.m */; };
 		BBDB21871970107700A0DE4C /* ESSCountryChooser.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21861970107700A0DE4C /* ESSCountryChooser.m */; };
-		BBDB21E71970303D00A0DE4C /* CountryPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21E61970303D00A0DE4C /* CountryPicker.m */; };
 		BBDB21F71970309100A0DE4C /* NBAsYouTypeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21E91970309100A0DE4C /* NBAsYouTypeFormatter.m */; };
 		BBDB21F81970309100A0DE4C /* NBNumberFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21EB1970309100A0DE4C /* NBNumberFormat.m */; };
 		BBDB21F91970309100A0DE4C /* NBPhoneMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDB21ED1970309100A0DE4C /* NBPhoneMetaData.m */; };
@@ -59,8 +58,6 @@
 		BBDB218319700C7100A0DE4C /* ESSPhoneNumberField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSPhoneNumberField.m; sourceTree = "<group>"; };
 		BBDB21851970107700A0DE4C /* ESSCountryChooser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESSCountryChooser.h; sourceTree = "<group>"; };
 		BBDB21861970107700A0DE4C /* ESSCountryChooser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESSCountryChooser.m; sourceTree = "<group>"; };
-		BBDB21E51970303D00A0DE4C /* CountryPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryPicker.h; sourceTree = "<group>"; };
-		BBDB21E61970303D00A0DE4C /* CountryPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryPicker.m; sourceTree = "<group>"; };
 		BBDB21E81970309100A0DE4C /* NBAsYouTypeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBAsYouTypeFormatter.h; sourceTree = "<group>"; };
 		BBDB21E91970309100A0DE4C /* NBAsYouTypeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBAsYouTypeFormatter.m; sourceTree = "<group>"; };
 		BBDB21EA1970309100A0DE4C /* NBNumberFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBNumberFormat.h; sourceTree = "<group>"; };
@@ -155,7 +152,6 @@
 		BBDB1F331970059700A0DE4C /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				BBDB1F35197006DF00A0DE4C /* CountryPicker */,
 				BBDB218819701EF700A0DE4C /* libPhoneNumber */,
 			);
 			name = Vendor;
@@ -177,15 +173,6 @@
 			);
 			name = ESSPhoneNumberField;
 			path = ../../ESSPhoneNumberField;
-			sourceTree = "<group>";
-		};
-		BBDB1F35197006DF00A0DE4C /* CountryPicker */ = {
-			isa = PBXGroup;
-			children = (
-				BBDB21E51970303D00A0DE4C /* CountryPicker.h */,
-				BBDB21E61970303D00A0DE4C /* CountryPicker.m */,
-			);
-			path = CountryPicker;
 			sourceTree = "<group>";
 		};
 		BBDB218819701EF700A0DE4C /* libPhoneNumber */ = {
@@ -295,7 +282,6 @@
 				BBDB21871970107700A0DE4C /* ESSCountryChooser.m in Sources */,
 				BBDB21F81970309100A0DE4C /* NBNumberFormat.m in Sources */,
 				BBDB21FB1970309100A0DE4C /* NBPhoneNumberDesc.m in Sources */,
-				BBDB21E71970303D00A0DE4C /* CountryPicker.m in Sources */,
 				BB83AEDC197061A000BE674F /* ESSPhoneNumberFieldDemoViewController.m in Sources */,
 				BBDB21FA1970309100A0DE4C /* NBPhoneNumber.m in Sources */,
 				BBDB21F71970309100A0DE4C /* NBAsYouTypeFormatter.m in Sources */,
