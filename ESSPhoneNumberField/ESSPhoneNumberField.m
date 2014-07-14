@@ -29,7 +29,7 @@
 @end
 
 @implementation ESSPhoneNumberField
-#warning TODO: #8 optionally validate number as you type
+
 #pragma mark - Constants
 
 NSUInteger const kESSPhoneNumberMaximumLength = 15;

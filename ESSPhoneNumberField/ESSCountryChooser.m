@@ -29,7 +29,7 @@
 @end
 
 @implementation ESSCountryChooser
-#warning TODO: #1 implement search
+
 #pragma mark - Constants
 
 /** Default value for ::defaultSectionTitle. */
