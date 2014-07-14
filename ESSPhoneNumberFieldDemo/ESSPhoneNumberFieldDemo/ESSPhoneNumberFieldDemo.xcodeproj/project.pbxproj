@@ -155,7 +155,7 @@
 				BBDB218819701EF700A0DE4C /* libPhoneNumber */,
 			);
 			name = Vendor;
-			path = ../../ESSPhoneNumberField/Vendor;
+			path = ../../Vendor;
 			sourceTree = SOURCE_ROOT;
 		};
 		BBDB1F34197005A800A0DE4C /* ESSPhoneNumberField */ = {
