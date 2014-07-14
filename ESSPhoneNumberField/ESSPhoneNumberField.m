@@ -240,8 +240,6 @@ CGFloat const kESSPhoneNumberFieldLeftPadding = 8.0f;
         return YES;
     }
     
-    #warning TODO: #7 limit insertion to 15 characters, including country code
-    
     // Replace the characters
     NSString *substringBeforeRange = [textField.text substringToIndex:range.location];
     NSString *digitsBeforeRange = [self numberCharactersFromString:substringBeforeRange];
