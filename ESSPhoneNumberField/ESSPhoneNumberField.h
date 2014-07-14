@@ -11,6 +11,8 @@
 
 @interface ESSPhoneNumberField : UIControl <ESSCountryChooserDelegate, UITextFieldDelegate>
 
+/** The E.164 standard limits phone numbers to 15 characters. */
+extern NSUInteger const kESSPhoneNumberMaximumLength;
 /** Default placeholder text for ::nationalPhoneNumberField. */
 extern NSString * const kESSPhoneNumberFieldDefaultPlaceholder;
 

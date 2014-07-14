@@ -32,8 +32,11 @@
 #warning TODO: #8 optionally validate number as you type
 #pragma mark - Constants
 
+NSUInteger const kESSPhoneNumberMaximumLength = 15;
 NSString * const kESSPhoneNumberFieldDefaultPlaceholder = @"Phone number";
+/** Used to size the button. */
 NSString * const kESSPhoneNumberFieldMaxWidthString = @" +888 ";
+/** Width of the padding on the left side of ::nationalPhoneNumberField. */
 CGFloat const kESSPhoneNumberFieldLeftPadding = 8.0f;
 
 #pragma mark - Initialization
@@ -100,7 +103,7 @@ CGFloat const kESSPhoneNumberFieldLeftPadding = 8.0f;
 {
     _nationalPhoneNumber = nationalPhoneNumber;
     
-    if ([nationalPhoneNumber isEqualToString:@""]) {
+    if (!nationalPhoneNumber || [nationalPhoneNumber isEqualToString:@""]) {
         self.nationalPhoneNumberField.text = @"";
     } else {
         self.nationalPhoneNumberField.text = [self nationalPhoneNumberFormatted];
@@ -123,6 +126,8 @@ CGFloat const kESSPhoneNumberFieldLeftPadding = 8.0f;
 /** Returns only the decimal digit characters from the string argument. */
 - (NSString *)numberCharactersFromString:(NSString *)string
 {
+    if (!string) { return string; }
+    if (string.length < 1) { return @""; }
     return [[string componentsSeparatedByCharactersInSet:
              [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
             componentsJoinedByString:@""];
@@ -220,6 +225,10 @@ CGFloat const kESSPhoneNumberFieldLeftPadding = 8.0f;
 - (void)countryChooser:(ESSCountryChooser *)countryChooser didSelectCountry:(ESSCountry *)country;
 {
     self.countryCode = country.callingCode;
+    if (self.nationalPhoneNumber) {
+        // reload nationalPhoneNumberField formatting
+        self.nationalPhoneNumber = self.nationalPhoneNumber;
+    }
     [self sendActionsForControlEvents:UIControlEventEditingChanged];
 }
 
@@ -252,6 +261,18 @@ CGFloat const kESSPhoneNumberFieldLeftPadding = 8.0f;
         if (digitsBeforeRange.length > 0) {
             digitsBeforeRange = [digitsBeforeRange substringToIndex:digitsBeforeRange.length - 1];
         }
+    }
+    
+    // Limit phone number length to kESSPhoneNumberMaximumLength
+    NSInteger maxReplacementLength = ((NSInteger) kESSPhoneNumberMaximumLength) -
+                                     self.countryCode.length -
+                                     digitsBeforeRange.length -
+                                     digitsAfterRange.length;
+
+    if (((NSInteger) replacementDigits.length) > maxReplacementLength) {
+        replacementDigits = maxReplacementLength >= 0 ?
+                            [replacementDigits substringToIndex:maxReplacementLength] :
+                            @"";
     }
     
     self.nationalPhoneNumber = [NSString stringWithFormat:@"%@%@%@", digitsBeforeRange, replacementDigits, digitsAfterRange];
