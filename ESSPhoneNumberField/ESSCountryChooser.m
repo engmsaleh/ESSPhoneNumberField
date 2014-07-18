@@ -211,7 +211,7 @@ NSString * const kESSCountryChooserReuseIdentifier = @"kESSCountryChooserReuseId
 
 - (void)dismissChooser
 {
-    [self.navigationController dismissViewControllerAnimated:self completion:nil];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)cancelChooser
